@@ -1,6 +1,7 @@
 import pygame as py
 import sys
 import Object as obj
+import DragObject as drag
 from pygame.locals import *
 
 
@@ -25,24 +26,7 @@ class Game:
         for event in py.event.get():
             if event.type == QUIT:
                 sys.exit()
-            elif event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if self.player.rect.collidepoint(event.pos):
-                        self.dragging = True
-                        mouse_x, mouse_y = event.pos
-                        self.offset_x = self.player.rect.x - mouse_x
-                        self.offset_y = self.player.rect.y - mouse_y
-
-            elif event.type == MOUSEBUTTONUP:
-                if event.button == 1:
-                    self.dragging = False
-
-            elif event.type == MOUSEMOTION:
-                if self.dragging:
-                    mouse_x, mouse_y = event.pos
-                    self.player.rect.x = mouse_x + self.offset_x
-                    self.player.rect.y = mouse_y + self.offset_y
-
+            drag.DragObject.Drag(self,self.player,event)
         # Update
         self.all_sprites.update()
 
