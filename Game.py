@@ -11,7 +11,7 @@ class Game:
         self.screen = py.display.set_mode((width, height))
         py.display.set_caption(name)
         self.all_sprites = py.sprite.Group()
-        self.player = obj.Object("Resources/mm.png", 0, 0)
+        self.player = obj.Object("Resources/MM.png", 0, 0)
         self.all_sprites.add(self.player)
         self.clicked = False
         self.dragging = False
