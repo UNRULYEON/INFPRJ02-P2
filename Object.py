@@ -17,7 +17,7 @@ class Object(pygame.sprite.Sprite):
 
     def update(self, event):
         if event.type == MOUSEBUTTONDOWN:
-            if self.rect.collidepoint(event.pos):
+            if self.point_collision(event.pos):
                 self.dragging = True
                 mx, my = event.pos
                 self.offset_x = self.rect.x - mx
@@ -30,7 +30,7 @@ class Object(pygame.sprite.Sprite):
                 self.rect.x = mx + self.offset_x
                 self.rect.y = my + self.offset_y
 
-    def point_collsion(self, point):
+    def point_collision(self, point):
         x, y = point
         x -= self.rect.x
         y -= self.rect.y
