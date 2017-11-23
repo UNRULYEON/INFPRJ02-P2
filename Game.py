@@ -27,19 +27,8 @@ class Game:
         for event in py.event.get():
             if event.type == QUIT:
                 sys.exit()
-            elif event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    for sprite in self.all_sprites:
-                        sprite.drag(event)
-            elif event.type == MOUSEBUTTONUP:
-                for sprite in self.all_sprites:
-                    if event.button == 1:
-                        sprite.dragging = False
-            elif event.type == MOUSEMOTION:
-                for sprite in self.all_sprites:
-                    sprite.drag(event)
+            self.all_sprites.update(event)
         # Update
-        self.all_sprites.update()
 
     def draw(self):
         # Draw
