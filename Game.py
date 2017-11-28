@@ -11,16 +11,10 @@ class Game:
         self.screen = py.display.set_mode((width, height))
         py.display.set_caption(name)
         self.all_sprites = py.sprite.Group()
-        self.player = Object("Resources/MM.png", 0, 0)
-        self.player2 = Object("Resources/MM.png", 300, 300)
-        # self.circle = obj.Object("Resources/circle.png", 300, 300, self.all_sprites)
-        self.all_sprites.add(self.player)
-        self.all_sprites.add(self.player2)
-        self.clicked = False
-        self.dragging = False
-        self.offset_x = 0
-        self.offset_y = 0
-
+        self.player = Object("Resources/MM.png", 0, 0,self.all_sprites)
+        self.player2 = Object("Resources/MM.png", 300, 300,self.all_sprites)
+        self.player3 = Object("Resources/ball.png", 200,300, self.all_sprites)
+        
     def update(self, tick_rate):
         # Events
         self.clock.tick(tick_rate)
