@@ -9,7 +9,7 @@ class Object(pygame.sprite.Sprite, DragObject):
         DragObject.__init__(self)
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path).convert_alpha()
-        self.image = pygame.transform.scale(self.image,( 100, 100))
+        self.image = pygame.transform.scale(self.image,(75, 75))
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
