@@ -9,7 +9,7 @@ class Object(pygame.sprite.Sprite, DragObject):
         DragObject.__init__(self)
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path).convert_alpha()
-        self.image = pygame.transform.scale(self.image,(75, 75))
+        self.image = pygame.transform.scale(self.image,(85, 85))
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = pos_x
@@ -19,3 +19,5 @@ class Object(pygame.sprite.Sprite, DragObject):
     def update(self, event):
         DragObject.update(self, event, self.rect, self.mask)
  
+    def end(self):
+        self.kill()

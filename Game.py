@@ -11,7 +11,8 @@ class Game:
         self.screen = py.display.set_mode((width, height))
         py.display.set_caption(name)
         self.all_sprites = py.sprite.Group()
-        Generate(self.all_sprites)
+        self.balls = py.sprite.Group()
+        Generate(self.balls)
         
     def update(self, tick_rate):
         # Events
@@ -20,10 +21,11 @@ class Game:
             if event.type == QUIT:
                 sys.exit()
             self.all_sprites.update(event)
+            self.balls.update(event)
         # Update
-
     def draw(self):
         # Draw
         self.screen.fill((0, 0, 0))
         self.all_sprites.draw(self.screen)
+        self.balls.draw(self.screen)
         py.display.flip()
