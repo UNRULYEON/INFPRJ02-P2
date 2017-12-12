@@ -14,9 +14,9 @@ class Main:
 
         self.coordinates = [['x','x','-','-','-','x','x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
-                            ['-', '-', 'O', 'O', 'O', '-', '-'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
+                            ['-', '-', 'O', '-', '-', '-', '-'],
+                            ['-', 'O', 'O', 'O', 'O', '-', '-'],
+                            ['-', '-', 'O', '-', '-', '-', '-'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x']]
 
@@ -33,7 +33,8 @@ class Main:
                 print("invalid ")
                 self.selected_item = None
         else:
-            self.selected_item = [row, col]
+            if self.coordinates[row][col] == 'O':
+                self.selected_item = [row, col]
 
     def validate_move(self, piece_position, row, col):
         piece_row, piece_col = piece_position
@@ -106,7 +107,6 @@ clock = py.time.Clock()
 game = Main()
 done = False
 while not done:
-    # --- Main event loop
     for event in py.event.get():  # User did something
         if event.type == py.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
@@ -116,22 +116,12 @@ while not done:
             mouse_x, mouse_y = py.mouse.get_pos()
             game.evaluate_click(py.mouse.get_pos())
 
-    # --- Drawing code should go here
-
-    # First, clear the screen to black. Don't put other drawing commands
-    # above this, or they will be erased with this command.
     screen.fill((0,   0,   0))
 
-    # draw the game board and marks:
     game.draw()
 
-    # --- Go ahead and update the screen with what we've drawn.
     py.display.flip()
 
-    # --- Limit to 60 frames per second
     clock.tick(60)
 
-# Close the window and quit.
-# If you forget this line, the program will 'hang'
-# on exit if running from IDLE.
 py.quit()
