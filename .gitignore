@@ -1,4 +1,5 @@
 <<<<<<< amar
+<<<<<<< amar
 
 <<<<<<< amar
 edugame\.log
@@ -277,3 +278,7 @@ paket-files/
 __pycache__/
 *.pyc
 >>>>>>> Wrote the basics for the menu
+=======
+
+edugame\.log
+>>>>>>> Finished Player movement and minigame selection

@@ -13016,6 +13016,9 @@
 12/07/2017 07:31:21 PM : INFO : A key was released
 12/07/2017 07:31:21 PM : INFO : ESCAPE key was pressed
 <<<<<<< amar
+<<<<<<< amar
+=======
+>>>>>>> Finished Player movement and minigame selection
 12/09/2017 11:28:16 AM : INFO : 
 12/09/2017 11:28:16 AM : INFO : --------------------------
 12/09/2017 11:28:16 AM : INFO : 
@@ -29403,6 +29406,7 @@
 12/16/2017 06:35:23 PM : INFO : LAUNCHING GAME 5
 12/16/2017 06:35:23 PM : INFO : W key was released
 12/16/2017 06:35:24 PM : INFO : ESCAPE key was pressed
+<<<<<<< amar
 =======
 11/21/2017 12:16:31 PM : INFO : 
 11/21/2017 12:16:31 PM : INFO : --------------------------
@@ -31298,3 +31302,5 @@
 >>>>>>> Added logic for the main menu
 =======
 >>>>>>> Finished player movement and assets
+=======
+>>>>>>> Finished Player movement and minigame selection
