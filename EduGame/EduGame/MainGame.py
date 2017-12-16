@@ -5,6 +5,7 @@ from pygame.locals import *
 from MainMenu import *
 from LoadAssets import *
 from Player import *
+from Objects import *
 
 # LOGGING SETTINGS
 logging.basicConfig(filename="edugame.log", format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p", level=logging.DEBUG)
@@ -30,6 +31,7 @@ white = (255, 255, 255)
 red = (255, 0, 0)
 
 # ASSETS
+#player, player_rect = la.asset("player_down.png")
 bg, bg_rect = la.asset("bg.png")
 table_back, table_back_rect = la.asset("table_back.png")
 table_front, table_front_rect = la.asset("table_front.png")
@@ -44,10 +46,21 @@ class Game(object):
         print("LOADING GAME")
         self.screen = pg.display.get_surface()
         self.clock = pg.time.Clock()
-        self.fps = 120
+        self.fps = 60
         self.state = True
 
+
+        self.bg = bg
+        self.table_back = table_back
+        self.table_front = table_front
+        self.board = board
+        self.chair = chair
+        self.bookcase = bookcase
+        
         self.player = Player()
+
+        self.screen.blit(bg, (0, 0))
+        pg.display.flip()
 
     def control(self):
         for event in pg.event.get():
@@ -99,18 +112,22 @@ class Game(object):
                 if event.key == K_d or event.key == K_RIGHT:
                     logging.info("D key is being held down")
                     self.player.move_right()
+                # SPACE
+                if event.key == K_SPACE:
+                    logging.info("Space is being held down")
+                    self.player.space()
 
     def render(self):
-        self.screen.fill(pg.Color("black"))
         self.screen.blit(bg, (0,0))
-        self.screen.blit(bookcase, (23,25))
         self.player.render(self.screen)
-        pg.display.update()
+        pg.display.flip()
     
     def main_loop(self):
         while self.state:
+            pg.event.pump()
             self.control()
             self.render()
+            #print(str(self.player.x), str(self.player.y))
             self.clock.tick(self.fps)
         
 # INIT GAME
