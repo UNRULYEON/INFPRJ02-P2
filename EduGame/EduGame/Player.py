@@ -3,109 +3,121 @@ import logging
 import pygame as pg
 import MainGame as mg
 from pygame.locals import *
+import pyganim
 import LoadAssets as la
 
-class Player(pg.sprite.Sprite):
+class Player(object):
 
     # CONSTRUCTOR
     def __init__(self):
         logging.info("INIT PLAYER")
         print("INIT PLAYER")
         pg.sprite.Sprite.__init__(self)
-        self.image, self.rect = la.asset("player_down.png")
         self.screen = pg.display.get_surface()
-        self.pos = [int(mg.screen_width / 2), int(mg.screen_height / 2)]
-        self.width = 50
-        self.height = 50
-        self.speed_idle = 0
-        self.speed_walk = 3
+        self.speed = 7
+        self.x = ((mg.screen_width // 2) - 48)
+        self.y = ((mg.screen_height // 2) + 100)
         self.state = "idle"
-        self.last_state = "idle"
-        self.player_up_ani = ['player_up_walk-1.png','player_up_walk-2.png']
-        self.player_down_ani = ['player_down_walk-1.png','player_down_walk-2.png']
-        self.player_left_ani = ['player_left_walk-1.png','player_left_walk-2.png']
-        self.player_right_ani = ['player_right_walk-1.png','player_right_walk-2.png']
-        self.counter = 0
-        self.time_counter = 0
+        self.last_state = "start"
+
+        #ANIMATIONs
+        self.up_standing = pg.image.load("assets/player_up.png")
+        self.down_standing = pg.image.load("assets/player_down.png")
+        self.left_standing = pg.image.load("assets/player_left.png")
+        self.right_standing = pg.image.load("assets/player_right.png")
+        self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .3),
+                                         ("assets/player_up.png", .2),
+                                         ("assets/player_up_walk-2.png", .3)])
+
+        self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .3),
+                                         ("assets/player_down.png", .2),
+                                         ("assets/player_down_walk-2.png", .3)])
+
+        self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .3),
+                                         ("assets/player_left.png", .2),
+                                         ("assets/player_left_walk-2.png", .3)])
+
+        self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .3),
+                                         ("assets/player_right.png", .2),
+                                         ("assets/player_right_walk-2.png", .3)])
 
     def stop(self):
-        self.last_state = self.state
         self.state = "idle"
-        self.time_counter = 0
-        if self.last_state is str("up"):
-            self.image, self.rect = la.asset("player_up.png")
-        elif self.last_state is str("down"):
-            self.image, self.rect = la.asset("player_down.png")
-        elif self.last_state is str("left"):
-            self.image, self.rect = la.asset("player_left.png")
-        elif self.last_state is str("right"):
-            self.image, self.rect = la.asset("player_right.png")
-        self.speed = self.speed_idle
-
+        self.upAnim.stop()
+        self.downAnim.stop()
+        self.leftAnim.stop()
+        self.rightAnim.stop()
+        
     def move_up(self):
-        logging.info("UP")
-        self.speed = self.speed_walk
-        self.state = "up"
+        if self.y >= 300:
+            self.y -= self.speed
+        self.upAnim.play()
+        self.state = self.last_state = "moveup"
 
     def move_down(self):
-        logging.info("DOWN")
-        self.speed = self.speed_walk
-        self.state = "down"
+        if self.y <= 497:
+            self.y += self.speed
+        self.downAnim.play()
+        self.state = self.last_state = "movedown"
 
     def move_left(self):
-        logging.info("LEFT")
-        self.speed = self.speed_walk
-        self.state = "left"
+        if self.x >= 2:
+            self.x -= self.speed
+        self.leftAnim.play()
+        self.state = self.last_state = "moveleft"
 
     def move_right(self):
-        logging.info("RIGHT")
-        self.speed = self.speed_walk
-        self.state = "right"
+        if self.x <=702:
+            self.x += self.speed
+        self.rightAnim.play()
+        self.state = self.last_state = "moveright"
+
+    def space(self):
+        if self.x > 120 and self.x < 170 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 1
+            logging.info("LAUNCHING GAME 1")
+            print("LAUNCHING GAME 1")
+        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 2
+            logging.info("LAUNCHING GAME 2")
+            print("LAUNCHING GAME 2")
+        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 3
+            logging.info("LAUNCHING GAME 3")
+            print("LAUNCHING GAME 3")
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 4
+            logging.info("LAUNCHING GAME 4")
+            print("LAUNCHING GAME 4")
+        if self.x > 530 and self.x < 580 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 5
+            logging.info("LAUNCHING GAME 5")
+            print("LAUNCHING GAME 5")
+
 
     def render(self, screen):
-        if self.state is "up" and (self.pos[1] >= 35):
-            self.time_counter += 1
-            if self.time_counter <= 7:
-                self.image, self.rect = la.asset(self.player_up_ani[0])
-            elif self.time_counter >= 7 and self.time_counter <= 14:
-                self.image, self.rect = la.asset("player_up.png")
-            elif self.time_counter >= 14 and self.time_counter <= 21:
-                self.image, self.rect = la.asset(self.player_up_ani[1])
-            elif self.time_counter >= 21:
-                self.time_counter = 0
-            self.pos[1] -= self.speed
-        elif self.state is "down" and (self.pos[1] <= 500):
-            self.time_counter += 1
-            if self.time_counter <= 7:
-                self.image, self.rect = la.asset(self.player_down_ani[0])
-            elif self.time_counter >= 7 and self.time_counter <= 14:
-                self.image, self.rect = la.asset("player_down.png")
-            elif self.time_counter >= 14 and self.time_counter <= 21:
-                self.image, self.rect = la.asset(self.player_down_ani[1])
-            elif self.time_counter >= 21:
-                self.time_counter = 0
-            self.pos[1] += self.speed
-        elif self.state is "left" and (self.pos[0] >= 10):
-            self.time_counter += 1
-            if self.time_counter <= 7:
-                self.image, self.rect = la.asset(self.player_left_ani[0])
-            elif self.time_counter >= 7 and self.time_counter <= 14:
-                self.image, self.rect = la.asset("player_left.png")
-            elif self.time_counter >= 14 and self.time_counter <= 21:
-                self.image, self.rect = la.asset(self.player_left_ani[1])
-            elif self.time_counter >= 21:
-                self.time_counter = 0
-            self.pos[0] -= self.speed
-        elif self.state is "right" and (self.pos[0] <= 700):
-            self.time_counter += 1
-            if self.time_counter <= 7:
-                self.image, self.rect = la.asset(self.player_right_ani[0])
-            elif self.time_counter >= 7 and self.time_counter <= 14:
-                self.image, self.rect = la.asset("player_right.png")
-            elif self.time_counter >= 14 and self.time_counter <= 21:
-                self.image, self.rect = la.asset(self.player_right_ani[1])
-            elif self.time_counter >= 21:
-                self.time_counter = 0
-            self.pos[0] += self.speed
-        self.screen.blit(self.image, (self.pos))
-        pg.display.update()
+        if self.state is "idle":
+            if self.last_state is "moveup":
+                self.screen.blit(self.up_standing, (self.x, self.y))
+            elif self.last_state is "movedown":
+                self.screen.blit(self.down_standing, (self.x, self.y))
+            elif self.last_state is "moveleft":
+                self.screen.blit(self.left_standing, (self.x, self.y))
+            elif self.last_state is "moveright":
+                self.screen.blit(self.right_standing, (self.x, self.y))
+            elif self.last_state is "start":
+                self.screen.blit(self.down_standing, (self.x, self.y))
+        elif self.state is "moveup":
+            self.upAnim.blit(self.screen, (self.x, self.y))
+        elif self.state is "movedown":
+            self.downAnim.blit(self.screen, (self.x, self.y))
+        elif self.state is "moveleft":
+            self.leftAnim.blit(self.screen, (self.x, self.y))
+        elif self.state is "moveright":
+            self.rightAnim.blit(self.screen, (self.x, self.y))
+
