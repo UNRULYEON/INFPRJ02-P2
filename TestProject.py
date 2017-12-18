@@ -1,36 +1,41 @@
 import pygame as py
 import sys
 from pygame.locals import *
+from Ball import Ball
 
 WIDTH = 800
 HEIGHT = 600
 PIECE_SIZE = 85
-WHITE = (255,255,255)
+WHITE = (255, 255, 255)
+
+
 class Main:
     def __init__(self):
         self.selected_item = None
-        self.odd_row = ['x','x','-','-','-','x','x']
-        self.regular_row = ['-','-','-','-','-','-','-']
+        self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
+        self.regular_row = ['-', '-', '-', '-', '-', '-', '-']
 
-        self.coordinates = [['x','x','-','-','-','x','x'],
+        self.coordinates = [['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['-', '-', '-', 'O', '-', '-', '-'],
                             ['-', '-', 'O', 'O', 'O', '-', '-'],
                             ['-', '-', '-', 'O', '-', '-', '-'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x']]
+        self.balls = py.sprite.Group()
+        self.gen()
 
     def evaluate_click(self, mouse_pos):
         row, col = self.getX(mouse_pos[0]), self.getY(mouse_pos[1])
-        print((row, col))
+        #print((row, col))
         if self.selected_item:
             move = self.validate_move(self.selected_item, row, col)
             if move[0]:
-                self.play(self.selected_item,row,col,move[1])
+                self.play(self.selected_item, row, col, move[1])
             elif row == self.selected_item[0] and col == self.selected_item[1]:
                 self.selected_item = None
             else:
-                print("invalid ")
+                #print("invalid ")
                 self.selected_item = None
         else:
             self.selected_item = [row, col]
@@ -54,16 +59,25 @@ class Main:
         from_col = piece_position[1]
         self.coordinates[row][col] = 'O'
         self.coordinates[from_row][from_col] = '-'
+        for sprite in self.balls:
+            if sprite.grid == [from_row, from_col]:
+                print(sprite.grid)
+                sprite.grid = [row, col]
+                print(sprite.grid)
+            if sprite.grid == [jump[0],jump[1]]:
+                sprite.kill()
         if jump:
             self.coordinates[jump[0]][jump[1]] = '-'
             self.selected_item = [row, col]
             self.selected_item = None
 
+    def update(self):
+        self.balls.update()
 
     def draw(self):
         for index, x in enumerate(self.odd_row):
             if x != 'x':
-                py.draw.rect(screen,WHITE,(100 + (index * PIECE_SIZE), 0, PIECE_SIZE, PIECE_SIZE),5)
+                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 0, PIECE_SIZE, PIECE_SIZE), 5)
                 py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
         for index, x in enumerate(self.regular_row):
             if x != 'x':
@@ -74,16 +88,20 @@ class Main:
             if x != 'x':
                 py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 5 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
                 py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 6 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-        font = py.font.SysFont('Calibri', 50, False, False)
+        self.balls.draw(screen)
+
+    def gen(self):
         for r in range(len(self.coordinates)):
             for c in range(len(self.coordinates[r])):
                 mark = self.coordinates[r][c]
-                color = (255, 0, 0)
+                #color = (255, 0, 0)
                 if mark != '-' and mark != 'x':
-                    mark_text = font.render(self.coordinates[r][c], True, color)
+                    #mark_text = font.render(self.coordinates[r][c], True, color)
                     x = 100 + (r * PIECE_SIZE) + (PIECE_SIZE / 2)
                     y = c * PIECE_SIZE + (PIECE_SIZE / 2)
-                    screen.blit(mark_text, [x - mark_text.get_width() / 2, y - mark_text.get_height() / 2])
+                    Ball("Resources/ball.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
+                         [self.getX(x), self.getY(y)])
+                    #screen.blit(mark_text, [x - mark_text.get_width() / 2, y - mark_text.get_height() / 2])
 
     def getX(self, pos):
         x = pos
@@ -99,6 +117,7 @@ class Main:
                 return i - 1
         return 6
 
+
 py.init()
 size = (WIDTH, HEIGHT)
 screen = py.display.set_mode(size)
@@ -106,32 +125,17 @@ clock = py.time.Clock()
 game = Main()
 done = False
 while not done:
-    # --- Main event loop
-    for event in py.event.get():  # User did something
-        if event.type == py.QUIT:  # If user clicked close
-            done = True  # Flag that we are done so we exit this loop
+    for event in py.event.get():
+        if event.type == py.QUIT:
+            done = True
         if event.type == py.KEYDOWN:
             entry = str(event.key)
         if event.type == py.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = py.mouse.get_pos()
             game.evaluate_click(py.mouse.get_pos())
-
-    # --- Drawing code should go here
-
-    # First, clear the screen to black. Don't put other drawing commands
-    # above this, or they will be erased with this command.
-    screen.fill((0,   0,   0))
-
-    # draw the game board and marks:
+    game.update()
+    screen.fill((0, 0, 0))
     game.draw()
-
-    # --- Go ahead and update the screen with what we've drawn.
     py.display.flip()
-
-    # --- Limit to 60 frames per second
     clock.tick(60)
-
-# Close the window and quit.
-# If you forget this line, the program will 'hang'
-# on exit if running from IDLE.
 py.quit()
