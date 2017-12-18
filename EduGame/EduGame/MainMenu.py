@@ -60,7 +60,6 @@ class MainMenu(object):
                     logging.info("S key was pressed")
                     self.mm_selector()
 
-
     def mm_render(self):
         pg.display.flip()
 

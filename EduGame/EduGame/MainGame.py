@@ -6,6 +6,7 @@ from MainMenu import *
 from LoadAssets import *
 from Player import *
 from Objects import *
+from minigames.amar import minigameAmar
 
 # LOGGING SETTINGS
 logging.basicConfig(filename="edugame.log", format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p", level=logging.DEBUG)
@@ -25,6 +26,10 @@ logging.info("New instance of EduGame.py")
 # SCREEN SETTINGS
 screen_size = screen_width, screen_height = 800, 600
 screen_caption = "School Roamer"
+
+# GAME VARIABLES 
+level = 1
+completed = 0
 
 # COLORS
 white = (255, 255, 255)
@@ -48,7 +53,6 @@ class Game(object):
         self.clock = pg.time.Clock()
         self.fps = 60
         self.state = True
-
 
         self.bg = bg
         self.table_back = table_back
