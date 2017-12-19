@@ -7771,3 +7771,716 @@
 12/19/2017 08:39:29 AM : INFO : 10, 7, 4, a + b + c, 21
 12/19/2017 08:39:33 AM : INFO : ESCAPE key was pressed
 12/19/2017 08:39:33 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : --------------------------
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : New instance of minigameAmar.py
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : --------------------------
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : New instance of EduGame.py
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : --------------------------
+12/19/2017 09:19:24 AM : INFO : 
+12/19/2017 09:19:24 AM : INFO : New instance of EduGame.py
+12/19/2017 09:19:26 AM : INFO : [MM] - LOADING MAIN MENU
+12/19/2017 09:19:26 AM : INFO : INIT DRAW
+12/19/2017 09:19:34 AM : INFO : SPACE key was pressed
+12/19/2017 09:19:34 AM : INFO : NEW GAME
+12/19/2017 09:19:34 AM : INFO : LOADING GAME
+12/19/2017 09:19:34 AM : INFO : INIT PLAYER
+12/19/2017 09:19:39 AM : INFO : D key is being held down
+12/19/2017 09:19:39 AM : INFO : W key is being held down
+12/19/2017 09:19:39 AM : INFO : W key was released
+12/19/2017 09:19:39 AM : INFO : D key was released
+12/19/2017 09:19:39 AM : INFO : D key is being held down
+12/19/2017 09:19:39 AM : INFO : W key is being held down
+12/19/2017 09:19:39 AM : INFO : W key was released
+12/19/2017 09:19:39 AM : INFO : W key is being held down
+12/19/2017 09:19:40 AM : INFO : D key was released
+12/19/2017 09:19:40 AM : INFO : W key was released
+12/19/2017 09:19:40 AM : INFO : D key is being held down
+12/19/2017 09:19:40 AM : INFO : D key was released
+12/19/2017 09:19:40 AM : INFO : D key is being held down
+12/19/2017 09:19:40 AM : INFO : D key is being held down
+12/19/2017 09:19:40 AM : INFO : D key is being held down
+12/19/2017 09:19:40 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key is being held down
+12/19/2017 09:19:41 AM : INFO : D key was released
+12/19/2017 09:19:41 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:42 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key is being held down
+12/19/2017 09:19:43 AM : INFO : A key was released
+12/19/2017 09:19:43 AM : INFO : D key is being held down
+12/19/2017 09:19:43 AM : INFO : D key is being held down
+12/19/2017 09:19:43 AM : INFO : D key is being held down
+12/19/2017 09:19:43 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : D key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : D key was released
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:44 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key is being held down
+12/19/2017 09:19:45 AM : INFO : W key was released
+12/19/2017 09:19:51 AM : INFO : Space is being held down
+12/19/2017 09:19:51 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:19:51 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:19:51 AM : INFO : INIT DRAW
+12/19/2017 09:19:51 AM : INFO : 6, 4, 7, a + b + c, 17
+12/19/2017 09:19:56 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:57 AM : INFO : A key is being held down
+12/19/2017 09:19:58 AM : INFO : A key is being held down
+12/19/2017 09:19:58 AM : INFO : A key is being held down
+12/19/2017 09:19:58 AM : INFO : A key was released
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key is being held down
+12/19/2017 09:19:58 AM : INFO : D key was released
+12/19/2017 09:19:59 AM : INFO : A key is being held down
+12/19/2017 09:19:59 AM : INFO : A key was released
+12/19/2017 09:19:59 AM : INFO : W key is being held down
+12/19/2017 09:19:59 AM : INFO : W key was released
+12/19/2017 09:19:59 AM : INFO : Space is being held down
+12/19/2017 09:19:59 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:19:59 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:19:59 AM : INFO : INIT DRAW
+12/19/2017 09:19:59 AM : INFO : 5, 1, 8, a - b - c, -4
+12/19/2017 09:20:00 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:20:00 AM : INFO : Space is being held down
+12/19/2017 09:20:00 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:20:00 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:20:00 AM : INFO : INIT DRAW
+12/19/2017 09:20:00 AM : INFO : 6, 9, 7, a - b + c, 4
+12/19/2017 09:20:01 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:20:01 AM : INFO : Space is being held down
+12/19/2017 09:20:01 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:20:01 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:20:01 AM : INFO : INIT DRAW
+12/19/2017 09:20:01 AM : INFO : 6, 3, 8, a - b + c, 11
+12/19/2017 09:20:02 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:20:03 AM : INFO : Space is being held down
+12/19/2017 09:20:03 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:20:03 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:20:03 AM : INFO : INIT DRAW
+12/19/2017 09:20:03 AM : INFO : 4, 10, 2, a + b + c, 16
+12/19/2017 09:20:03 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:04 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key is being held down
+12/19/2017 09:20:05 AM : INFO : A key was released
+12/19/2017 09:20:05 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key is being held down
+12/19/2017 09:20:06 AM : INFO : D key was released
+12/19/2017 09:20:06 AM : INFO : W key is being held down
+12/19/2017 09:20:06 AM : INFO : W key was released
+12/19/2017 09:20:06 AM : INFO : W key is being held down
+12/19/2017 09:20:07 AM : INFO : W key was released
+12/19/2017 09:20:11 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : --------------------------
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : New instance of minigameAmar.py
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : --------------------------
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : New instance of EduGame.py
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : --------------------------
+12/19/2017 09:49:26 AM : INFO : 
+12/19/2017 09:49:26 AM : INFO : New instance of EduGame.py
+12/19/2017 09:49:26 AM : INFO : [MM] - LOADING MAIN MENU
+12/19/2017 09:49:26 AM : INFO : INIT DRAW
+12/19/2017 09:49:31 AM : INFO : SPACE key was pressed
+12/19/2017 09:49:31 AM : INFO : NEW GAME
+12/19/2017 09:49:31 AM : INFO : LOADING GAME
+12/19/2017 09:49:31 AM : INFO : INIT PLAYER
+12/19/2017 09:49:33 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : D key is being held down
+12/19/2017 09:49:34 AM : INFO : W key is being held down
+12/19/2017 09:49:34 AM : INFO : D key was released
+12/19/2017 09:49:34 AM : INFO : W key was released
+12/19/2017 09:49:34 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:35 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key is being held down
+12/19/2017 09:49:36 AM : INFO : A key was released
+12/19/2017 09:49:36 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:37 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key is being held down
+12/19/2017 09:49:38 AM : INFO : D key was released
+12/19/2017 09:49:38 AM : INFO : A key is being held down
+12/19/2017 09:49:39 AM : INFO : A key was released
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:40 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key is being held down
+12/19/2017 09:49:41 AM : INFO : A key was released
+12/19/2017 09:49:41 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key is being held down
+12/19/2017 09:49:42 AM : INFO : D key was released
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:43 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key is being held down
+12/19/2017 09:49:44 AM : INFO : D key was released
+12/19/2017 09:49:44 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key is being held down
+12/19/2017 09:49:45 AM : INFO : W key was released
+12/19/2017 09:49:46 AM : INFO : Space is being held down
+12/19/2017 09:49:46 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:49:46 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:49:46 AM : INFO : INIT DRAW
+12/19/2017 09:49:46 AM : INFO : 2, 4, 7, a - b + c, 5
+12/19/2017 09:49:49 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:49:51 AM : INFO : A key is being held down
+12/19/2017 09:49:52 AM : INFO : A key was released
+12/19/2017 09:49:52 AM : INFO : A key is being held down
+12/19/2017 09:49:52 AM : INFO : A key was released
+12/19/2017 09:49:52 AM : INFO : D key is being held down
+12/19/2017 09:49:52 AM : INFO : A key is being held down
+12/19/2017 09:49:52 AM : INFO : D key was released
+12/19/2017 09:49:52 AM : INFO : A key was released
+12/19/2017 09:49:52 AM : INFO : D key is being held down
+12/19/2017 09:49:52 AM : INFO : D key was released
+12/19/2017 09:49:52 AM : INFO : A key is being held down
+12/19/2017 09:49:52 AM : INFO : A key was released
+12/19/2017 09:49:52 AM : INFO : D key is being held down
+12/19/2017 09:49:53 AM : INFO : D key was released
+12/19/2017 09:49:53 AM : INFO : W key is being held down
+12/19/2017 09:49:53 AM : INFO : A key is being held down
+12/19/2017 09:49:53 AM : INFO : A key was released
+12/19/2017 09:49:53 AM : INFO : D key is being held down
+12/19/2017 09:49:53 AM : INFO : W key was released
+12/19/2017 09:49:53 AM : INFO : D key was released
+12/19/2017 09:49:53 AM : INFO : A key is being held down
+12/19/2017 09:49:53 AM : INFO : W key is being held down
+12/19/2017 09:49:53 AM : INFO : W key was released
+12/19/2017 09:49:53 AM : INFO : A key was released
+12/19/2017 09:49:53 AM : INFO : D key is being held down
+12/19/2017 09:49:53 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : A key is being held down
+12/19/2017 09:49:54 AM : INFO : A key was released
+12/19/2017 09:49:54 AM : INFO : D key is being held down
+12/19/2017 09:49:54 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : D key is being held down
+12/19/2017 09:49:54 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : W key is being held down
+12/19/2017 09:49:54 AM : INFO : D key is being held down
+12/19/2017 09:49:54 AM : INFO : W key was released
+12/19/2017 09:49:54 AM : INFO : A key is being held down
+12/19/2017 09:49:54 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : W key is being held down
+12/19/2017 09:49:54 AM : INFO : A key was released
+12/19/2017 09:49:54 AM : INFO : D key is being held down
+12/19/2017 09:49:54 AM : INFO : W key was released
+12/19/2017 09:49:54 AM : INFO : A key is being held down
+12/19/2017 09:49:54 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : W key is being held down
+12/19/2017 09:49:54 AM : INFO : A key was released
+12/19/2017 09:49:54 AM : INFO : D key is being held down
+12/19/2017 09:49:54 AM : INFO : W key was released
+12/19/2017 09:49:54 AM : INFO : A key is being held down
+12/19/2017 09:49:54 AM : INFO : D key was released
+12/19/2017 09:49:54 AM : INFO : W key is being held down
+12/19/2017 09:49:55 AM : INFO : W key was released
+12/19/2017 09:49:55 AM : INFO : A key was released
+12/19/2017 09:50:27 AM : INFO : Space is being held down
+12/19/2017 09:50:27 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:50:27 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:50:27 AM : INFO : INIT DRAW
+12/19/2017 09:50:27 AM : INFO : 5, 1, 8, a + b + c, 14
+12/19/2017 09:50:29 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:50:58 AM : INFO : Space is being held down
+12/19/2017 09:50:58 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:50:58 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:50:58 AM : INFO : INIT DRAW
+12/19/2017 09:50:58 AM : INFO : 1, 4, 10, a - b - c, -13
+12/19/2017 09:51:08 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:52:21 AM : INFO : Space is being held down
+12/19/2017 09:52:21 AM : INFO : LAUNCHING GAME 4
+12/19/2017 09:52:21 AM : INFO : LOADING MINIGAME AMAR
+12/19/2017 09:52:21 AM : INFO : INIT DRAW
+12/19/2017 09:52:21 AM : INFO : 9, 2, 5, a + b + c, 16
+12/19/2017 09:52:41 AM : INFO : ESCAPE key was pressed
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:28 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key is being held down
+12/19/2017 09:53:29 AM : INFO : A key was released
+12/19/2017 09:53:29 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : D key is being held down
+12/19/2017 09:53:30 AM : INFO : A key is being held down
+12/19/2017 09:53:30 AM : INFO : D key was released
+12/19/2017 09:53:30 AM : INFO : A key was released
+12/19/2017 09:53:31 AM : INFO : D key is being held down
+12/19/2017 09:53:31 AM : INFO : A key is being held down
+12/19/2017 09:53:31 AM : INFO : D key was released
+12/19/2017 09:53:31 AM : INFO : A key was released
+12/19/2017 09:53:31 AM : INFO : D key is being held down
+12/19/2017 09:53:31 AM : INFO : D key was released
+12/19/2017 09:53:31 AM : INFO : S key is being held down
+12/19/2017 09:53:31 AM : INFO : D key is being held down
+12/19/2017 09:53:31 AM : INFO : S key was released
+12/19/2017 09:53:31 AM : INFO : A key is being held down
+12/19/2017 09:53:31 AM : INFO : D key was released
+12/19/2017 09:53:31 AM : INFO : A key was released
+12/19/2017 09:53:31 AM : INFO : D key is being held down
+12/19/2017 09:53:31 AM : INFO : W key is being held down
+12/19/2017 09:53:31 AM : INFO : D key was released
+12/19/2017 09:53:31 AM : INFO : W key was released
+12/19/2017 09:53:31 AM : INFO : W key is being held down
+12/19/2017 09:53:32 AM : INFO : A key is being held down
+12/19/2017 09:53:32 AM : INFO : A key was released
+12/19/2017 09:53:32 AM : INFO : D key is being held down
+12/19/2017 09:53:32 AM : INFO : W key was released
+12/19/2017 09:53:32 AM : INFO : D key was released
+12/19/2017 09:53:32 AM : INFO : A key is being held down
+12/19/2017 09:53:32 AM : INFO : A key was released
+12/19/2017 09:53:36 AM : INFO : D key is being held down
+12/19/2017 09:53:36 AM : INFO : W key is being held down
+12/19/2017 09:53:36 AM : INFO : W key was released
+12/19/2017 09:53:36 AM : INFO : D key was released
+12/19/2017 09:53:36 AM : INFO : S key is being held down
+12/19/2017 09:53:37 AM : INFO : S key was released
+12/19/2017 09:53:37 AM : INFO : D key is being held down
+12/19/2017 09:53:37 AM : INFO : A key is being held down
+12/19/2017 09:53:37 AM : INFO : D key was released
+12/19/2017 09:53:37 AM : INFO : A key was released
+12/19/2017 09:53:37 AM : INFO : D key is being held down
+12/19/2017 09:53:37 AM : INFO : A key is being held down
+12/19/2017 09:53:37 AM : INFO : D key was released
+12/19/2017 09:53:37 AM : INFO : A key was released
+12/19/2017 09:53:37 AM : INFO : W key is being held down
+12/19/2017 09:53:38 AM : INFO : D key is being held down
+12/19/2017 09:53:38 AM : INFO : D key was released
+12/19/2017 09:53:38 AM : INFO : W key was released
+12/19/2017 09:53:38 AM : INFO : S key is being held down
+12/19/2017 09:53:38 AM : INFO : W key is being held down
+12/19/2017 09:53:38 AM : INFO : W key was released
+12/19/2017 09:53:38 AM : INFO : A key is being held down
+12/19/2017 09:53:38 AM : INFO : S key was released
+12/19/2017 09:53:38 AM : INFO : A key was released
+12/19/2017 09:53:39 AM : INFO : S key is being held down
+12/19/2017 09:53:39 AM : INFO : S key was released
+12/19/2017 09:53:39 AM : INFO : D key is being held down
+12/19/2017 09:53:39 AM : INFO : W key is being held down
+12/19/2017 09:53:39 AM : INFO : D key was released
+12/19/2017 09:53:39 AM : INFO : W key was released
+12/19/2017 09:53:39 AM : INFO : W key is being held down
+12/19/2017 09:53:39 AM : INFO : W key was released
+12/19/2017 09:53:56 AM : INFO : W key is being held down
+12/19/2017 09:53:56 AM : INFO : W key was released
+12/19/2017 09:53:57 AM : INFO : A key is being held down
+12/19/2017 09:53:57 AM : INFO : A key was released
+12/19/2017 09:53:57 AM : INFO : D key is being held down
+12/19/2017 09:53:57 AM : INFO : D key was released
+12/19/2017 09:53:57 AM : INFO : A key is being held down
+12/19/2017 09:53:58 AM : INFO : A key was released
+12/19/2017 09:54:22 AM : INFO : D key is being held down
+12/19/2017 09:54:22 AM : INFO : D key was released
+12/19/2017 09:54:23 AM : INFO : A key is being held down
+12/19/2017 09:54:23 AM : INFO : A key was released
+12/19/2017 09:54:23 AM : INFO : D key is being held down
+12/19/2017 09:54:23 AM : INFO : D key was released
+12/19/2017 09:54:23 AM : INFO : A key is being held down
+12/19/2017 09:54:23 AM : INFO : A key was released
+12/19/2017 09:54:23 AM : INFO : D key is being held down
+12/19/2017 09:54:23 AM : INFO : A key is being held down
+12/19/2017 09:54:23 AM : INFO : D key was released
+12/19/2017 09:54:23 AM : INFO : A key was released
+12/19/2017 09:54:23 AM : INFO : D key is being held down
+12/19/2017 09:54:23 AM : INFO : D key was released
+12/19/2017 09:54:23 AM : INFO : A key is being held down
+12/19/2017 09:54:24 AM : INFO : A key was released
+12/19/2017 09:54:24 AM : INFO : D key is being held down
+12/19/2017 09:54:24 AM : INFO : D key was released
+12/19/2017 09:54:24 AM : INFO : A key is being held down
+12/19/2017 09:54:24 AM : INFO : W key is being held down
+12/19/2017 09:54:24 AM : INFO : A key was released
+12/19/2017 09:54:24 AM : INFO : D key is being held down
+12/19/2017 09:54:24 AM : INFO : W key was released
+12/19/2017 09:54:24 AM : INFO : D key was released
+12/19/2017 09:54:24 AM : INFO : A key is being held down
+12/19/2017 09:54:24 AM : INFO : A key was released
+12/19/2017 09:54:24 AM : INFO : D key is being held down
+12/19/2017 09:54:24 AM : INFO : D key was released
+12/19/2017 09:54:24 AM : INFO : A key is being held down
+12/19/2017 09:54:24 AM : INFO : W key is being held down
+12/19/2017 09:54:24 AM : INFO : A key was released
+12/19/2017 09:54:24 AM : INFO : W key was released
+12/19/2017 09:54:39 AM : INFO : ESCAPE key was pressed
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : --------------------------
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : New instance of minigameAmar.py
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : --------------------------
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : New instance of EduGame.py
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : --------------------------
+12/19/2017 10:00:11 AM : INFO : 
+12/19/2017 10:00:11 AM : INFO : New instance of EduGame.py
+12/19/2017 10:00:13 AM : INFO : [MM] - LOADING MAIN MENU
+12/19/2017 10:00:13 AM : INFO : INIT DRAW
+12/19/2017 10:00:15 AM : INFO : S key was pressed
+12/19/2017 10:00:15 AM : INFO : was 1, now 0. Exit is highlighted
+12/19/2017 10:00:15 AM : INFO : 
+12/19/2017 10:00:15 AM : INFO : W key was pressed
+12/19/2017 10:00:15 AM : INFO : was 0, now 1. New Game is highlighted
+12/19/2017 10:00:15 AM : INFO : 
+12/19/2017 10:00:16 AM : INFO : SPACE key was pressed
+12/19/2017 10:00:16 AM : INFO : NEW GAME
+12/19/2017 10:00:16 AM : INFO : LOADING GAME
+12/19/2017 10:00:16 AM : INFO : INIT PLAYER
+12/19/2017 10:00:16 AM : INFO : D key is being held down
+12/19/2017 10:00:16 AM : INFO : D key was released
+12/19/2017 10:00:16 AM : INFO : D key is being held down
+12/19/2017 10:00:16 AM : INFO : W key is being held down
+12/19/2017 10:00:16 AM : INFO : W key was released
+12/19/2017 10:00:16 AM : INFO : D key was released
+12/19/2017 10:00:18 AM : INFO : D key is being held down
+12/19/2017 10:00:18 AM : INFO : W key is being held down
+12/19/2017 10:00:18 AM : INFO : D key was released
+12/19/2017 10:00:18 AM : INFO : W key was released
+12/19/2017 10:00:18 AM : INFO : W key is being held down
+12/19/2017 10:00:18 AM : INFO : D key is being held down
+12/19/2017 10:00:18 AM : INFO : W key was released
+12/19/2017 10:00:18 AM : INFO : A key is being held down
+12/19/2017 10:00:18 AM : INFO : W key is being held down
+12/19/2017 10:00:18 AM : INFO : A key was released
+12/19/2017 10:00:18 AM : INFO : D key was released
+12/19/2017 10:00:19 AM : INFO : W key was released
+12/19/2017 10:00:19 AM : INFO : D key is being held down
+12/19/2017 10:00:19 AM : INFO : D key was released
+12/19/2017 10:00:19 AM : INFO : D key is being held down
+12/19/2017 10:00:19 AM : INFO : D key was released
+12/19/2017 10:00:19 AM : INFO : W key is being held down
+12/19/2017 10:00:19 AM : INFO : W key was released
+12/19/2017 10:00:19 AM : INFO : D key is being held down
+12/19/2017 10:00:19 AM : INFO : W key is being held down
+12/19/2017 10:00:19 AM : INFO : W key was released
+12/19/2017 10:00:19 AM : INFO : D key was released
+12/19/2017 10:00:19 AM : INFO : D key is being held down
+12/19/2017 10:00:19 AM : INFO : W key is being held down
+12/19/2017 10:00:19 AM : INFO : W key was released
+12/19/2017 10:00:19 AM : INFO : D key was released
+12/19/2017 10:00:20 AM : INFO : D key is being held down
+12/19/2017 10:00:20 AM : INFO : W key is being held down
+12/19/2017 10:00:20 AM : INFO : W key was released
+12/19/2017 10:00:20 AM : INFO : D key was released
+12/19/2017 10:00:20 AM : INFO : W key is being held down
+12/19/2017 10:00:20 AM : INFO : D key is being held down
+12/19/2017 10:00:20 AM : INFO : W key was released
+12/19/2017 10:00:20 AM : INFO : D key was released
+12/19/2017 10:00:26 AM : INFO : ESCAPE key was pressed

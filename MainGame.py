@@ -29,7 +29,7 @@ screen_caption = "School Roamer"
 
 # GAME VARIABLES 
 level = 1
-completed = 0
+completed = 0   
 
 # COLORS
 white = (255, 255, 255)
