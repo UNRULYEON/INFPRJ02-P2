@@ -35,7 +35,7 @@ class Player(object):
                                          ("assets/player_down_walk-2.png", .2)])
 
         self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .2),
-                                        ("assets/player_left.png", 1),
+                                        ("assets/player_left.png", .1),
                                          ("assets/player_left_walk-2.png", .2)])
 
         self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .2),
