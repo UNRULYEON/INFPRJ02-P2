@@ -17,9 +17,9 @@ class Main:
 
         self.coordinates = [['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
-                            ['-', '-', 'O', 'O', 'O', '-', '-'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
+                            ['-', '-', 'O', '-', '-', '-', '-'],
+                            ['-', 'O', 'O', 'O', 'O', '-', '-'],
+                            ['-', '-', 'O', '-', '-', '-', '-'],
                             ['x', 'x', '-', '-', '-', 'x', 'x'],
                             ['x', 'x', '-', '-', '-', 'x', 'x']]
         self.balls = py.sprite.Group()
@@ -93,7 +93,7 @@ class Main:
     def draw(self):
         color = (255, 0, 0)
         font = py.font.SysFont("comicsansms", 40)
-        mark_text = font.render(str(self.move_count), True, color)
+        mark_text = font.render('move count:' + str(self.move_count), True, color)
         screen.blit(mark_text, (10, 50))
         for index, x in enumerate(self.odd_row):
             if x != 'x':
