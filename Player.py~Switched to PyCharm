@@ -5,7 +5,7 @@ import MainGame as mg
 from pygame.locals import *
 import pyganim
 import LoadAssets as la
-from minigames.amar import minigameAmar
+#from minigames.amar import minigameAmar
 
 class Player(object):
 
@@ -26,21 +26,21 @@ class Player(object):
         self.down_standing = pg.image.load("assets/player_down.png")
         self.left_standing = pg.image.load("assets/player_left.png")
         self.right_standing = pg.image.load("assets/player_right.png")
-        self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .3),
-                                         ("assets/player_up.png", .2),
-                                         ("assets/player_up_walk-2.png", .3)])
+        self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .2),
+                                         ("assets/player_up.png", .1),
+                                         ("assets/player_up_walk-2.png", .2)])
 
-        self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .3),
-                                         ("assets/player_down.png", .2),
-                                         ("assets/player_down_walk-2.png", .3)])
+        self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .2),
+                                         ("assets/player_down.png", .1),
+                                         ("assets/player_down_walk-2.png", .2)])
 
-        self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .3),
-                                         ("assets/player_left.png", .2),
-                                         ("assets/player_left_walk-2.png", .3)])
+        self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .2),
+                                        ("assets/player_left.png", 1),
+                                         ("assets/player_left_walk-2.png", .2)])
 
-        self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .3),
-                                         ("assets/player_right.png", .2),
-                                         ("assets/player_right_walk-2.png", .3)])
+        self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .2),
+                                         ("assets/player_right.png", .1),
+                                         ("assets/player_right_walk-2.png", .2)])
 
     def stop(self):
         self.state = "idle"
@@ -116,7 +116,7 @@ class Player(object):
             logging.info("LAUNCHING GAME 4")
             print("LAUNCHING GAME 4")
 
-            minigameAmar.main()
+            #minigameAmar.main()
             
             self.upAnim.stop()
             self.downAnim.stop()
