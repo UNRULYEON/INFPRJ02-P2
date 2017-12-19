@@ -7,7 +7,13 @@ WIDTH = 800
 HEIGHT = 600
 PIECE_SIZE = 85
 WHITE = (255, 255, 255)
-levels = [[['x', 'x', '-', '-', '-', 'x', 'x'],
+class Main:
+    def __init__(self,num):
+        self.selected_item = None
+        self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
+        self.regular_row = ['-', '-', '-', '-', '-', '-', '-']
+        self.levels = [[
+['x', 'x', '-', '-', '-', 'x', 'x'],
 ['x', 'x', '-', '-', '-', 'x', 'x'],
 ['-', '-', 'O', '-', '-', '-', '-'],
 ['-', 'O', 'O', 'O', 'O', '-', '-'],
@@ -47,19 +53,7 @@ levels = [[['x', 'x', '-', '-', '-', 'x', 'x'],
 ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
 ['x', 'x', '-', 'O', '-', 'x', 'x']],
 ]
-class Main:
-    def __init__(self,level):
-        self.selected_item = None
-        self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
-        self.regular_row = ['-', '-', '-', '-', '-', '-', '-']
-        self.coordinates = level
-        '''self.coordinates = [['x', 'x', '-', '-', '-', 'x', 'x'],
-                            ['x', 'x', '-', 'O', '-', 'x', 'x'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
-                            ['-', 'O', 'O', 'O', 'O', 'O', '-'],
-                            ['-', '-', '-', 'O', '-', '-', '-'],
-                            ['x', 'x', '-', 'O', '-', 'x', 'x'],
-                            ['x', 'x', '-', '-', '-', 'x', 'x']]'''
+        self.coordinates = self.levels[num]
         self.balls = py.sprite.Group()
         self.gen()
         self.move_count = 0
@@ -161,15 +155,11 @@ class Main:
         for r in range(len(self.coordinates)):
             for c in range(len(self.coordinates[r])):
                 mark = self.coordinates[r][c]
-                #color = (255, 0, 0)
                 if mark != '-' and mark != 'x':
-                    #mark_text = font.render(self.coordinates[r][c], True, color)
                     x = 100 + (r * PIECE_SIZE) + (PIECE_SIZE / 2)
                     y = c * PIECE_SIZE + (PIECE_SIZE / 2)
                     Ball("Resources/ball.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
                          [self.getX(x), self.getY(y)])
-                    #screen.blit(mark_text, [x - mark_text.get_width() / 2, y - mark_text.get_height() / 2])
-
     def getX(self, pos):
         x = pos
         for i in range(0, 7):
@@ -189,7 +179,7 @@ py.init()
 size = (WIDTH, HEIGHT)
 screen = py.display.set_mode(size)
 clock = py.time.Clock()
-game = Main(levels[4])
+game = Main(4)
 done = False
 while not done:
     for event in py.event.get():
@@ -197,7 +187,7 @@ while not done:
             done = True
         if event.type == py.KEYDOWN:
             if event.key == K_q:
-                game = Main()
+                game = Main(4)
         if event.type == py.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = py.mouse.get_pos()
     game.update()
