@@ -2,11 +2,9 @@ import os, sys
 import logging
 import pygame as pg
 from pygame.locals import *
-from MainMenu import *
-from LoadAssets import *
+from DrawText import *
 from Player import *
 from Objects import *
-#from minigames.amar import minigameAmar
 
 # LOGGING SETTINGS
 logging.basicConfig(filename="edugame.log", format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p", level=logging.DEBUG)
@@ -27,22 +25,17 @@ logging.info("New instance of EduGame.py")
 screen_size = screen_width, screen_height = 800, 600
 screen_caption = "School Roamer"
 
-# GAME VARIABLES 
+# GAME VARIABLES
 level = 1
-completed = 0
+minigame_vlad = False
+minigame_amar = False
+minigame_armand = False
 
 # COLORS
 white = (255, 255, 255)
-red = (255, 0, 0)
 
 # ASSETS
-#player, player_rect = la.asset("player_down.png")
 bg, bg_rect = la.asset("bg.png")
-table_back, table_back_rect = la.asset("table_back.png")
-table_front, table_front_rect = la.asset("table_front.png")
-board, board_rect = la.asset("board.png")
-chair, chair_rect = la.asset("chair.png")
-bookcase, bookcase_rect = la.asset("bookcase.png")
 
 class Game(object):
     # CONSTRUCTOR
@@ -55,13 +48,12 @@ class Game(object):
         self.state = True
 
         self.bg = bg
-        self.table_back = table_back
-        self.table_front = table_front
-        self.board = board
-        self.chair = chair
-        self.bookcase = bookcase
         
         self.player = Player()
+
+        self.draw = DrawText()
+        self.font = pg.font.SysFont("comicsansms", 30)
+        self.fsize = 16
 
         self.screen.blit(bg, (0, 0))
         pg.display.flip()
@@ -70,7 +62,7 @@ class Game(object):
         for event in pg.event.get():
 
             # QUIT
-            if event.type == QUIT:   
+            if event.type == QUIT:
                 print("ESCAPE")
                 self.state = False
 
@@ -121,17 +113,86 @@ class Game(object):
                     logging.info("Space is being held down")
                     self.player.space()
 
+    def check(selfs):
+        global level
+        global minigame_vlad
+        global minigame_amar
+        global minigame_armand
+
+        level = level
+        minigame_vlad = minigame_vlad
+        minigame_amar = minigame_amar
+        minigame_armand = minigame_armand
+
+        if minigame_vlad and minigame_amar and minigame_armand:
+            logging.info("NEXT LEVEL, SETTING MINIGAME COMPLETED BOOLEANS TO FALSE")
+            level += 1
+            minigame_vlad = minigame_amar = minigame_armand  = False
+        if level is 5:
+            logging.info("YOU'VE REACHED LEVEL 5, QUITTING...")
+            pg.quit()
+            sys.exit()
+
     def render(self):
         self.screen.blit(bg, (0,0))
+        self.draw.rtcenter(self.screen, "Level: " + str(level), 30, None, white, 355, -280, 1)
+        if self.player.x > 230 and self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
+            # MINIGAME 1
+            # Name minigame
+            self.draw.rtcenter(self.screen, "MINIGAME VLAD", 40, None, white, 0, -240, 1)
+
+            # Completed?
+            if minigame_vlad is True:
+                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+
+            # How to play
+            self.draw.rtcenter(self.screen, "", 30, None, white, 0, -160, 1)
+
+            # Press space to enter
+            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 1)
+
+
+        if self.player.x > 330 and self.player.x < 380 and self.player.y > 250 and self.player.y < 320:
+            # MINIGAME 2
+            # Name minigame
+            self.draw.rtcenter(self.screen, "MINIGAME AMAR", 40, None, white, 0, -240, 0)
+
+            # Completed?
+            if minigame_amar is True:
+                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+
+            # How to play
+            self.draw.rtcenter(self.screen, "Fill in the correct numbers before the timer runs out", 30, None, white, 0, -160, 1)
+
+            # Press space to enter
+            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 0)
+
+        if self.player.x > 430 and self.player.x < 480 and self.player.y > 250 and self.player.y < 320:
+            # MINIGAME 3
+            # Name minigame
+            self.draw.rtcenter(self.screen, "MINIGAME ARMAND", 40, None, white, 0, -240, 0)
+
+            # Completed?
+            if minigame_armand is True:
+                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+
+            # How to play
+            self.draw.rtcenter(self.screen, "", 30, None, white, 0, -160, 1)
+
+            # Press space to enter
+            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 0)
+
         self.player.render(self.screen)
         pg.display.flip()
-    
+
     def main_loop(self):
         while self.state:
-            pg.event.pump()
             self.control()
+            self.check()
             self.render()
-            #print(str(self.player.x), str(self.player.y))
             self.clock.tick(self.fps)
         
 # INIT GAME
@@ -144,7 +205,6 @@ def main():
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(0)
     pg.key.set_repeat(1, 20)
-    MainMenu().main_loop()
     Game().main_loop()
     pg.quit()
     sys.exit()
