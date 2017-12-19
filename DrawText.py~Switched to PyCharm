@@ -4,7 +4,6 @@ import pygame as pg
 from pygame.locals import *
 from MainGame import *
 from LoadAssets import *
-from MainMenu import *
 
 class DrawText(object):
 
