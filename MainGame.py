@@ -144,7 +144,6 @@ def main():
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(0)
     pg.key.set_repeat(1, 20)
-    #pg.key.set_repeat(500, 30)
     MainMenu().main_loop()
     Game().main_loop()
     pg.quit()
