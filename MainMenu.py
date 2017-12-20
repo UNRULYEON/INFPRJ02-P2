@@ -3,7 +3,6 @@ import logging
 import pygame as pg
 from pygame.locals import *
 from MainGame import *
-from LoadAssets import *
 from DrawText import *
 
 class MainMenu(object):
