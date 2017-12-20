@@ -1,8 +1,11 @@
+import os, sys
 import logging
 import pygame as pg
 import MainGame as mg
 from pygame.locals import *
 import pyganim
+import LoadAssets as la
+from minigames.amar import minigameAmar
 
 class Player(object):
 
@@ -23,21 +26,21 @@ class Player(object):
         self.down_standing = pg.image.load("assets/player_down.png")
         self.left_standing = pg.image.load("assets/player_left.png")
         self.right_standing = pg.image.load("assets/player_right.png")
-        self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .2),
-                                         ("assets/player_up.png", .1),
-                                         ("assets/player_up_walk-2.png", .2)])
+        self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .3),
+                                         ("assets/player_up.png", .2),
+                                         ("assets/player_up_walk-2.png", .3)])
 
-        self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .2),
-                                         ("assets/player_down.png", .1),
-                                         ("assets/player_down_walk-2.png", .2)])
+        self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .3),
+                                         ("assets/player_down.png", .2),
+                                         ("assets/player_down_walk-2.png", .3)])
 
-        self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .2),
-                                        ("assets/player_left.png", .1),
-                                         ("assets/player_left_walk-2.png", .2)])
+        self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .3),
+                                         ("assets/player_left.png", .2),
+                                         ("assets/player_left_walk-2.png", .3)])
 
-        self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .2),
-                                         ("assets/player_right.png", .1),
-                                         ("assets/player_right_walk-2.png", .2)])
+        self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .3),
+                                         ("assets/player_right.png", .2),
+                                         ("assets/player_right_walk-2.png", .3)])
 
     def stop(self):
         self.state = "idle"
@@ -71,32 +74,62 @@ class Player(object):
         self.state = self.last_state = "moveright"
 
     def space(self):
-        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and mg.minigame_vlad is False:
+        if self.x > 120 and self.x < 170 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 1
+            logging.info("LAUNCHING GAME 1")
+            print("LAUNCHING GAME 1")
+
+
+            
+            self.upAnim.stop()
+            self.downAnim.stop()
+            self.leftAnim.stop()
+            self.rightAnim.stop()
+        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320:
             print(str(self.x), str(self.y))
             #LAUNCH MINIGAME 2
             logging.info("LAUNCHING GAME 2")
             print("LAUNCHING GAME 2")
+
+
             
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and mg.minigame_amar is False:
+        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320:
             print(str(self.x), str(self.y))
             #LAUNCH MINIGAME 3
             logging.info("LAUNCHING GAME 3")
             print("LAUNCHING GAME 3")
+
+
             
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and mg.minigame_armand is False:
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320:
             print(str(self.x), str(self.y))
-            #LAUNCH MINIGAME 4
+            #LAUNCH MINIGAME 4 - AMAR
             logging.info("LAUNCHING GAME 4")
             print("LAUNCHING GAME 4")
 
+            minigameAmar.main()
+            
+            self.upAnim.stop()
+            self.downAnim.stop()
+            self.leftAnim.stop()
+            self.rightAnim.stop()
+        if self.x > 530 and self.x < 580 and self.y > 250 and self.y < 320:
+            print(str(self.x), str(self.y))
+            #LAUNCH MINIGAME 5
+            logging.info("LAUNCHING GAME 5")
+            print("LAUNCHING GAME 5")
+
+
+            
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()

@@ -6,7 +6,7 @@ from MainMenu import *
 from LoadAssets import *
 from Player import *
 from Objects import *
-#from minigames.amar import minigameAmar
+from minigames.amar import minigameAmar
 
 # LOGGING SETTINGS
 logging.basicConfig(filename="edugame.log", format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%m/%d/%Y %I:%M:%S %p", level=logging.DEBUG)
@@ -29,7 +29,7 @@ screen_caption = "School Roamer"
 
 # GAME VARIABLES 
 level = 1
-completed = 0
+completed = 0   
 
 # COLORS
 white = (255, 255, 255)
@@ -143,15 +143,7 @@ def main():
     # FULLSCREEN MODE
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(0)
-<<<<<<< amar:MainGame.py~Switched to PyCharm
-<<<<<<< amar:MainGame.py~Switched to PyCharm
-    #pg.key.set_repeat(500, 30)
-=======
-    pg.key.set_repeat(1, 20)
->>>>>>> fixed player movement and sprite speed:MainGame.py
-=======
-    pg.key.set_repeat(1, 20)
->>>>>>> Added new background:MainGame.py
+    pg.key.set_repeat(500, 30)
     MainMenu().main_loop()
     Game().main_loop()
     pg.quit()
