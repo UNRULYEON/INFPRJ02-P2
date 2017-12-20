@@ -13,6 +13,7 @@ __pycache__/Player\.cpython-36\.pyc
 
 __pycache__/pyganim\.cpython-36\.pyc
 
+<<<<<<< HEAD
 minigameAmar\.log
 
 minigames/__pycache__/__init__\.cpython-36\.pyc
@@ -22,3 +23,12 @@ minigames/amar/__pycache__/__init__\.cpython-36\.pyc
 minigames/amar/__pycache__/level1\.cpython-36\.pyc
 
 minigames/amar/__pycache__/minigameAmar\.cpython-36\.pyc
+=======
+edugame\.log
+
+*.log
+>>>>>>> dev
+
+minigames/amar/__pycache__/
+
+__pycache__/
