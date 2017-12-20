@@ -67,13 +67,13 @@ class Problem(object):
     # CONSTRUCTOR
     def __init__(self):
         self.level = mg.level
-        self.completed = mg.completed
+        self.minigame_amar = mg.minigame_amar
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
         self.font = pg.font.Font(None, 30)
         self.fsize = 16
         print("Player is level: " + str(self.level))
-        print("Player has completed " + str(self.completed) + " minigames")
+        print("Player has completed " + str(self.minigame_amar) + " minigames")
         self.reinit()
 
     def reinit(self):
