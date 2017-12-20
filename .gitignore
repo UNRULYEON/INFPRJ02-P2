@@ -17,6 +17,7 @@ edugame\.log
 \__pycache__/Player.cpython-36\.pyc
 \__pycache__/pyganim.cpython-36\.pyc
 \edugame\.log
+<<<<<<< amar
 >>>>>>> Added gitignore
 <<<<<<< amar
 =======
@@ -288,3 +289,18 @@ edugame\.log
 >>>>>>> Finished Player movement and minigame selection
 =======
 >>>>>>> Added gitignore
+=======
+edugame\.log
+
+__pycache__/DrawText\.cpython-36\.pyc
+
+__pycache__/LoadAssets\.cpython-36\.pyc
+
+__pycache__/MainGame\.cpython-36\.pyc
+
+__pycache__/Objects\.cpython-36\.pyc
+
+__pycache__/Player\.cpython-36\.pyc
+
+__pycache__/pyganim\.cpython-36\.pyc
+>>>>>>> Edited .gitignore
