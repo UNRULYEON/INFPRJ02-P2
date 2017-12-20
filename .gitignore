@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< amar
 <<<<<<< amar
 
@@ -9,6 +10,9 @@ edugame\.log
 =======
 >>>>>>> Added gitignore
 =======
+=======
+
+>>>>>>> dev
 \.idea/workspace\.xml
 \__pycache__/DrawText.cpython-36\.pyc
 \__pycache__/LoadAssets.cpython-36\.pyc
@@ -17,6 +21,7 @@ edugame\.log
 \__pycache__/Player.cpython-36\.pyc
 \__pycache__/pyganim.cpython-36\.pyc
 \edugame\.log
+<<<<<<< HEAD
 <<<<<<< amar
 >>>>>>> Added gitignore
 <<<<<<< amar
@@ -290,6 +295,8 @@ edugame\.log
 =======
 >>>>>>> Added gitignore
 =======
+=======
+>>>>>>> dev
 edugame\.log
 
 __pycache__/DrawText\.cpython-36\.pyc
@@ -303,4 +310,7 @@ __pycache__/Objects\.cpython-36\.pyc
 __pycache__/Player\.cpython-36\.pyc
 
 __pycache__/pyganim\.cpython-36\.pyc
+<<<<<<< HEAD
 >>>>>>> Edited .gitignore
+=======
+>>>>>>> dev
