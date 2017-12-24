@@ -6,6 +6,7 @@ from pygame.locals import *
 import MainGame as mg
 import LoadAssets as la
 from minigames.amar import level1
+from minigames.amar import level2
 import random
 from random import randint, choice
 
@@ -33,6 +34,7 @@ screen_size = screen_width, screen_height = 800, 600
 # ASSETS
 bg, bg_rect = la.asset("bg.png")
 black = (0, 0, 0)
+white =(255, 255, 255)
 problem_height = 167.625
 
 def asset(name):
@@ -72,7 +74,7 @@ class Problem(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        self.level = mg.level
+        self.level = 2
         self.minigame_amar = mg.minigame_amar
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
@@ -164,6 +166,52 @@ class Problem(object):
 
         elif self.level is 2:
             print("Creating level 2 problem")
+
+            numbers = []
+            choiceNumbers = []
+            a, b, c, sort_answer, sort_answer_1, sort_answer_2, answer, extra = level2.gen_problem(self)
+
+            numbers.append(a)
+            choiceNumbers.append(a)
+            numbers.append(b)
+            choiceNumbers.append(b)
+            numbers.append(c)
+            choiceNumbers.append(c)
+
+            guess1 = choice(choiceNumbers)
+            posNumGuess1 = numbers.index(guess1)
+            choiceNumbers.remove(guess1)
+
+            guess2 = choice(choiceNumbers)
+            posNumGuess2 = numbers.index(guess2)
+            choiceNumbers.remove(guess2)
+
+            posNum = numbers.index(choiceNumbers[0])
+
+            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1_rect.x = 137.75
+            rectangle_1_rect.y = 300
+            rectangle_1_dragging = False
+            rectangle_1_number = numbers[posNumGuess1]
+
+            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2_rect.x = 350
+            rectangle_2_rect.y = 300
+            rectangle_2_dragging = False
+            rectangle_2_number = numbers[posNumGuess2]
+
+            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3_rect.x = 562.25
+            rectangle_3_rect.y = 300
+            rectangle_3_dragging = False
+            labelRandom = str(extra)
+
+            answer = str(answer)
+
+            logging.info(str(a) + ", " + str(b) + ", " + str(c) + ", " + str(sort_answer) + ", " + str(answer))
+            print(str(a) + ", " + str(b) + ", " + str(c) + ", " + str(sort_answer) + ", " + str(answer))
+            print("Numbers the user has to put in the right place: " + str(guess1) + " and " + str(guess2))
+
         elif self.level is 3:
             print("Creating level 3 problem")
         elif self.level is 4:
@@ -179,6 +227,115 @@ class Problem(object):
 
             global posNum
             global sort_answer
+
+            a = 0
+            b = 0
+            c = 0
+
+            print("Rectangle 1: " + str(rectangle_1_rect))
+            print("Rectangle 1 pos1: " + str(rectangle_1_rect.collidepoint(187.5, problem_height)))
+            print("Rectangle 1 pos2: " + str(rectangle_1_rect.collidepoint(375.5, problem_height)))
+            print("Rectangle 1 pos3: " + str(rectangle_1_rect.collidepoint(563.5, problem_height)))
+            print("Rectangle 2: " + str(rectangle_2_rect))
+            print("Rectangle 2 pos1: " + str(rectangle_2_rect.collidepoint(187.5, problem_height)))
+            print("Rectangle 2 pos2: " + str(rectangle_2_rect.collidepoint(375.5, problem_height)))
+            print("Rectangle 2 pos3: " + str(rectangle_2_rect.collidepoint(563.5, problem_height)))
+
+            if rectangle_1_rect.collidepoint(187.5, problem_height):
+                print("Rectangle 1 is in pos 1")
+                a = rectangle_1_number
+                print("a is: " + str(a))
+                if rectangle_2_rect.collidepoint(375.5, problem_height) and posNum is 2:
+                    print("Rectangle 2 is in pos 2")
+                    b = rectangle_2_number
+                    print("b is: " + str(b))
+                    c = numbers[posNum]
+                    print("c is: " + str(c))
+                elif rectangle_2_rect.collidepoint(563.5, problem_height) and posNum is 1:
+                    print("Rectangle 2 is in pos 3")
+                    c = rectangle_2_number
+                    print("c is: " + str(c))
+                    b = numbers[posNum]
+                    print("b is: " + str(b))
+            elif rectangle_1_rect.collidepoint(375.5, problem_height):
+                print("Rectangle 1 is in pos 2")
+                b = rectangle_1_number
+                print("b is: " + str(b))
+                if rectangle_2_rect.collidepoint(187.5, problem_height) and posNum is 2:
+                    print("Rectangle 2 is in pos 1")
+                    a = rectangle_2_number
+                    print("a is: " + str(a))
+                    c = numbers[posNum]
+                    print("c is: " + str(c))
+                elif rectangle_2_rect.collidepoint(563.5, problem_height) and posNum is 0:
+                    print("Rectangle 2 is in pos 3")
+                    c = rectangle_2_number
+                    print("c is: " + str(c))
+                    a = numbers[posNum]
+                    print("a is: " + str(a))
+            elif rectangle_1_rect.collidepoint(563.5, problem_height):
+                print("Rectangle 1 is in pos 3")
+                c = rectangle_1_number
+                print("c is: " + str(c))
+                if rectangle_2_rect.collidepoint(187.5, problem_height) and posNum is 1:
+                    print("Rectangle 2 is in pos 1")
+                    a = rectangle_2_number
+                    print("a is: " + str(a))
+                    b = numbers[posNum]
+                    print("b is: " + str(b))
+                    print("Rectangle 2 wasn't set!")
+                elif rectangle_2_rect.collidepoint(375.5, problem_height) and posNum is 0:
+                    print("Rectangle 2 is in pos 2")
+                    b = rectangle_2_number
+                    print("b is: " + str(b))
+                    a = numbers[posNum]
+                    print("a is: " + str(a))
+            else:
+                print("rect1 was not set")
+
+            if sort_answer == "a + b + c":
+                print("Sort answer is " + str(sort_answer))
+                a = a + b
+                a = a + c
+                a = str(a)
+                print(str(a))
+                if a == answer:
+                    print("Correct!")
+                else:
+                    print("Wrong!")
+            elif sort_answer == "a - b + c":
+                print("Sort answer is " + str(sort_answer))
+                a = a - b
+                a = a + c
+                a = str(a)
+                print(str(a))
+                if a == answer:
+                    print("Correct!")
+                else:
+                    print("Wrong!")
+            elif sort_answer == "a + b - c":
+                print("Sort answer is " + str(sort_answer))
+                a = a + b
+                a = a = c
+                a = str(a)
+                print(str(a))
+                if a == answer:
+                    print("Correct!")
+                else:
+                    print("Wrong!")
+            elif sort_answer == "a - b - c":
+                print("Sort answer is " + str(sort_answer))
+                a = a - b
+                a = a - c
+                a = str(a)
+                print(str(a))
+                if a == answer:
+                    print("Correct!")
+                else:
+                    print("Wrong!")
+
+        elif self.level is 2:
+            print("Level 1 problem")
 
             a = 0
             b = 0
@@ -360,30 +517,57 @@ class Problem(object):
     def render(self):
         self.draw.rt(self.screen, "Level: " + str(self.level), 30, None, black, 695, 30, 1)
 
-        if posNum is 0:
-            self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-            if posNumGuess1 is 1:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 375.5, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 563.25, problem_height, 1)
-            if posNumGuess1 is 2:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 563.25, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 375.5, problem_height, 1)
-        elif posNum is 1:
-            self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-            if posNumGuess1 is 0:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 187.5, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 563.25, problem_height, 1)
-            if posNumGuess1 is 2:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 563.25, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 187.5, problem_height, 1)
-        elif posNum is 2:
-            self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-            if posNumGuess1 is 0:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 187.5, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 375.5, problem_height, 1)
-            if posNumGuess1 is 1:
-                self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, black, 375.5, problem_height, 1)
-                self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, black, 187.5, problem_height, 1)
+        if self.level is 1:
+            if posNum is 0:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
+                if posNumGuess1 is 1:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                if posNumGuess1 is 2:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+            elif posNum is 1:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
+                if posNumGuess1 is 0:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                if posNumGuess1 is 2:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+            elif posNum is 2:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
+                if posNumGuess1 is 0:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                if posNumGuess1 is 1:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+
+        elif self.level is 2:
+            if posNum is 0:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
+                if posNumGuess1 is 1:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                if posNumGuess1 is 2:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+            elif posNum is 1:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
+                if posNumGuess1 is 0:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                if posNumGuess1 is 2:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+            elif posNum is 2:
+                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
+                if posNumGuess1 is 0:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                if posNumGuess1 is 1:
+                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
 
         self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
         self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
