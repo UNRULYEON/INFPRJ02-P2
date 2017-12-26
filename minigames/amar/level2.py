@@ -3,7 +3,7 @@ from random import randint
 
 
 def gen_problem(self):
-    print("Generating level 1 problem...")
+    print("Generating level 2 problem...")
 
     global sort_answer
     global sort_answer_1
@@ -38,7 +38,7 @@ def gen_problem(self):
         sort_answer_1 = "+"
         sort_answer_2 = "-"
         x = a + b
-        y = x = c
+        y = x - c
         answer = y
     elif sort_answer is 4:
         sort_answer = "a - b - c"
