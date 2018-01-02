@@ -2,6 +2,7 @@ import os, sys
 import time
 import pygame as pg
 from pygame.locals import *
+sys.path.append('../..')
 import MainGame as mg
 import LoadAssets as la
 from minigames.amar import level1
@@ -58,7 +59,7 @@ class Problem(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        self.level = 5 # Change to mg.level when in prod
+        self.level = 1 # Change to mg.level when in prod
         self.minigame_amar = mg.minigame_amar
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
@@ -72,6 +73,7 @@ class Problem(object):
         self.timer_lvl3 = 100
         self.timer_lvl4 = 100
         self.timer_lvl5 = 100
+        self.timer_reset = 3
         self.dt = 0
         global checkButton
         checkButton = pg.rect.Rect(0, 0, 300, 50)
@@ -79,6 +81,12 @@ class Problem(object):
         checkButton.centery = 75
         self.problemCompleted = False
         self.problemFailed = False
+        self.firstend = True
+        self.resetStatus = False
+        self.win = pg.mixer.Sound("assets/win.ogg")
+        self.lose = pg.mixer.Sound("assets/lose.ogg")
+        self.ee = pg.mixer.Sound("assets/ee.ogg")
+        self.resetSound = pg.mixer.Sound("assets/reset.ogg")
         self.reinit()
 
     def reinit(self):
@@ -276,19 +284,19 @@ class Problem(object):
             posNum = numbers.index(choiceNumbers[0])
 
             rectangle_1, rectangle_1_rect = la.asset("sn.png")
-            rectangle_1_rect.x = 137.75
+            rectangle_1_rect.x = 117.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
             rectangle_2, rectangle_2_rect = la.asset("sn.png")
-            rectangle_2_rect.x = 350
+            rectangle_2_rect.x = 330
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             labelRandom = str(extra)
 
             rectangle_3, rectangle_3_rect = la.asset("sn.png")
-            rectangle_3_rect.x = 562.25
+            rectangle_3_rect.x = 542.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
             rectangle_3_number = numbers[posNumGuess2]
@@ -323,19 +331,19 @@ class Problem(object):
             posNum = numbers.index(choiceNumbers[0])
 
             rectangle_1, rectangle_1_rect = la.asset("sn.png")
-            rectangle_1_rect.x = 137.75
+            rectangle_1_rect.x = 117.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
             rectangle_2, rectangle_2_rect = la.asset("sn.png")
-            rectangle_2_rect.x = 350
+            rectangle_2_rect.x = 330
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             rectangle_2_number = numbers[posNumGuess2]
 
             rectangle_3, rectangle_3_rect = la.asset("sn.png")
-            rectangle_3_rect.x = 562.25
+            rectangle_3_rect.x = 542.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
             labelRandom = str(extra)
@@ -344,6 +352,33 @@ class Problem(object):
 
             print(str(a) + ", " + str(b) + ", " + str(c) + ", " + str(sort_answer) + ", " + str(answer))
             print("Numbers the user has to put in the right place: " + str(guess1) + " and " + str(guess2))
+
+    def reset(self):
+        print("resetting")
+        if self.level is 1 or 2 or 3:
+            print("Wrong!")
+            self.resetSound.play(loops=0)
+            self.resetStatus = True
+            rectangle_1_rect.x = 137.75
+            rectangle_1_rect.y = 300
+
+            rectangle_2_rect.x = 350
+            rectangle_2_rect.y = 300
+
+            rectangle_3_rect.x = 562.25
+            rectangle_3_rect.y = 300
+        elif self.level is 4 or 5:
+            print("Wrong!")
+            self.resetSound.play(loops=0)
+            self.resetStatus = True
+            rectangle_1_rect.x = 117.75
+            rectangle_1_rect.y = 300
+
+            rectangle_2_rect.x = 330
+            rectangle_2_rect.y = 300
+
+            rectangle_3_rect.x = 542.25
+            rectangle_3_rect.y = 300
 
     def check(self):
         print("------------------")
@@ -430,15 +465,7 @@ class Problem(object):
                     print("Correct!")
                     self.problemCompleted = True
                 else:
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
-                    rectangle_1_rect.y = 300
-
-                    rectangle_2_rect.x = 350
-                    rectangle_2_rect.y = 300
-
-                    rectangle_3_rect.x = 562.25
-                    rectangle_3_rect.y = 300
+                    self.reset()
             elif sort_answer == "a - b + c":
                 print("Sort answer is " + str(sort_answer))
                 a = a - b
@@ -449,15 +476,7 @@ class Problem(object):
                     print("Correct!")
                     self.problemCompleted = True
                 else:
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
-                    rectangle_1_rect.y = 300
-
-                    rectangle_2_rect.x = 350
-                    rectangle_2_rect.y = 300
-
-                    rectangle_3_rect.x = 562.25
-                    rectangle_3_rect.y = 300
+                    self.reset()
             elif sort_answer == "a + b - c":
                 print("Sort answer is " + str(sort_answer))
                 a = a + b
@@ -468,15 +487,7 @@ class Problem(object):
                     print("Correct!")
                     self.problemCompleted = True
                 else:
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
-                    rectangle_1_rect.y = 300
-
-                    rectangle_2_rect.x = 350
-                    rectangle_2_rect.y = 300
-
-                    rectangle_3_rect.x = 562.25
-                    rectangle_3_rect.y = 300
+                    self.reset()
             elif sort_answer == "a - b - c":
                 print("Sort answer is " + str(sort_answer))
                 a = a - b
@@ -487,15 +498,7 @@ class Problem(object):
                     print("Correct!")
                     self.problemCompleted = True
                 else:
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
-                    rectangle_1_rect.y = 300
-
-                    rectangle_2_rect.x = 350
-                    rectangle_2_rect.y = 300
-
-                    rectangle_3_rect.x = 562.25
-                    rectangle_3_rect.y = 300
+                    self.reset()
 
         elif self.level is 2:
             print("Level 2 problem")
@@ -576,7 +579,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -596,7 +599,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -616,7 +619,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -636,7 +639,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -725,7 +728,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -745,7 +748,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -765,7 +768,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -785,7 +788,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    print("Wrong!")
+                    self.reset.play(loops=0)
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -864,164 +867,268 @@ class Problem(object):
                 print("rect2 was not set")
 
             if sort_answer == "a x b + c":
-                print("Sort answer is " + str(sort_answer))
-                a = a * b
-                a = a + c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a * b
+                    a = a + c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a x b - c":
-                print("Sort answer is " + str(sort_answer))
-                a = a * b
-                a = a - c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a * b
+                    a = a - c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a - b x c":
-                print("Sort answer is " + str(sort_answer))
-                b = b * c
-                a = a - b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b * c
+                    a = a - b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a + b x c":
-                print("Sort answer is " + str(sort_answer))
-                b = b * c
-                a = a + b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b * c
+                    a = a + b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a / b + c":
-                print("Sort answer is " + str(sort_answer))
-                a = a / b
-                a = a + c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a / b
+                    a = a + c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a / b - c":
-                print("Sort answer is " + str(sort_answer))
-                a = a / b
-                a = a - c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a / b
+                    a = a - c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a + b / c":
-                print("Sort answer is " + str(sort_answer))
-                b = b / c
-                a = a + b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b / c
+                    a = a + b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a - b / c":
-                print("Sort answer is " + str(sort_answer))
-                b = b / c
-                a = a - b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b / c
+                    a = a - b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
 
         elif self.level is 5:
@@ -1093,164 +1200,268 @@ class Problem(object):
                 print("rect2 was not set")
 
             if sort_answer == "a x b + c":
-                print("Sort answer is " + str(sort_answer))
-                a = a * b
-                a = a + c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a * b
+                    a = a + c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a x b - c":
-                print("Sort answer is " + str(sort_answer))
-                a = a * b
-                a = a - c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a * b
+                    a = a - c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a - b x c":
-                print("Sort answer is " + str(sort_answer))
-                b = b * c
-                a = a - b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b * c
+                    a = a - b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                        self.reset.play(loops=0)
+                    else:
+                        print("Wrong!")
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a + b x c":
-                print("Sort answer is " + str(sort_answer))
-                b = b * c
-                a = a + b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b * c
+                    a = a + b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a / b + c":
-                print("Sort answer is " + str(sort_answer))
-                a = a / b
-                a = a + c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a / b
+                    a = a + c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a / b - c":
-                print("Sort answer is " + str(sort_answer))
-                a = a / b
-                a = a - c
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    a = a / b
+                    a = a - c
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a + b / c":
-                print("Sort answer is " + str(sort_answer))
-                b = b / c
-                a = a + b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b / c
+                    a = a + b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                    else:
+                        print("Wrong!")
+                        self.reset.play(loops=0)
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
             elif sort_answer == "a - b / c":
-                print("Sort answer is " + str(sort_answer))
-                b = b / c
-                a = a - b
-                a = str(a)
-                print(str(a))
-                if a == answer:
-                    print("Correct!")
-                    self.problemCompleted = True
+                if a or b or c is not 0:
+                    print("Sort answer is " + str(sort_answer))
+                    b = b / c
+                    a = a - b
+                    a = round(a, 1)
+                    a = str(a)
+                    print(str(a))
+                    if a == answer:
+                        print("Correct!")
+                        self.problemCompleted = True
+                        self.reset.play(loops=0)
+                    else:
+                        print("Wrong!")
+                        rectangle_1_rect.x = 117.75
+                        rectangle_1_rect.y = 300
+
+                        rectangle_2_rect.x = 330
+                        rectangle_2_rect.y = 300
+
+                        rectangle_3_rect.x = 542.25
+                        rectangle_3_rect.y = 300
                 else:
-                    print("Wrong!")
-                    print("Wrong!")
-                    rectangle_1_rect.x = 137.75
+                    print("Not all sticky notes were placed, try again")
+                    self.reset.play(loops=0)
+                    rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
-                    rectangle_2_rect.x = 350
+                    rectangle_2_rect.x = 330
                     rectangle_2_rect.y = 300
 
-                    rectangle_3_rect.x = 562.25
+                    rectangle_3_rect.x = 542.25
                     rectangle_3_rect.y = 300
 
     def control(self):
@@ -1320,357 +1531,380 @@ class Problem(object):
                 if event.key == K_ESCAPE:
                     print("ESCAPE MINIGAME")
                     Minigame.state = False
+                if event.key == K_h:
+                    self.ee.play(loops=0)
 
     def render(self):
 
-        self.draw.rt(self.screen, "Level: " + str(self.level), 30, None, black, 695, 30, 1)
+        if self.firstend:
+            self.screen.blit(bg, (0,0))
+            self.draw.rt(self.screen, "Level: " + str(self.level), 30, None, black, 695, 30, 1)
 
-        if self.level is 1:
-            if posNum is 0:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-            elif posNum is 1:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            elif posNum is 2:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
-            self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
-            self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
+            if self.level is 1 and self.firstend:
+                if posNum is 0:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                elif posNum is 1:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                elif posNum is 2:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
+                self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
 
-            # Sticky Note 1
-            self.screen.blit(rectangle_1, rectangle_1_rect)
+                # Sticky Note 1
+                self.screen.blit(rectangle_1, rectangle_1_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label1 = str(numbers[posNumGuess1])
-            label1 = self.font.render(label1, 1, (0, 0, 0))
-            self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label1 = str(numbers[posNumGuess1])
+                label1 = self.font.render(label1, 1, (0, 0, 0))
+                self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
 
-            # Sticky Note 2
-            self.screen.blit(rectangle_3, rectangle_3_rect)
+                # Sticky Note 2
+                self.screen.blit(rectangle_3, rectangle_3_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label2 = str(numbers[posNumGuess2])
-            label2 = self.font.render(label2, 1, (0, 0, 0))
-            self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label2 = str(numbers[posNumGuess2])
+                label2 = self.font.render(label2, 1, (0, 0, 0))
+                self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
 
-            # Sticky Note 3
-            self.screen.blit(rectangle_2, rectangle_2_rect)
+                # Sticky Note 3
+                self.screen.blit(rectangle_2, rectangle_2_rect)
 
-            self.font = pg.font.Font(None, 70)
-            self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
-            self.screen.blit(self.labelRandom, ((rectangle_2_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_2_rect.centery - (self.labelRandom.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
+                self.screen.blit(self.labelRandom, ((rectangle_2_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_2_rect.centery - (self.labelRandom.get_rect().height / 2))))
 
-            # Timer level 1
-            self.timer_lvl1 -= self.dt
+                # Timer level 1
+                self.timer_lvl1 -= self.dt
 
-            self.font = pg.font.Font(None, 30)
-            txt = self.font.render("Timer: " + str(round(self.timer_lvl1, 0)), True, black)
-            self.screen.blit(txt, (30, 30))
+                self.font = pg.font.Font(None, 30)
+                txt = self.font.render("Timer: " + str(round(self.timer_lvl1, 0)), True, black)
+                self.screen.blit(txt, (30, 30))
 
-            if self.timer_lvl1 <= 0:
-                self.problemFailed = True
+                if self.timer_lvl1 <= 0:
+                    self.problemFailed = True
 
-        elif self.level is 2:
-            if posNum is 0:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-            elif posNum is 1:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            elif posNum is 2:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
-            self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
-            self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
+            elif self.level is 2 and self.firstend:
+                if posNum is 0:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                elif posNum is 1:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                elif posNum is 2:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
+                self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
 
-            # Sticky Note 1
-            self.screen.blit(rectangle_1, rectangle_1_rect)
+                # Sticky Note 1
+                self.screen.blit(rectangle_1, rectangle_1_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label1 = str(numbers[posNumGuess1])
-            label1 = self.font.render(label1, 1, (0, 0, 0))
-            self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label1 = str(numbers[posNumGuess1])
+                label1 = self.font.render(label1, 1, (0, 0, 0))
+                self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
 
-            # Sticky Note 2
-            self.screen.blit(rectangle_2, rectangle_2_rect)
+                # Sticky Note 2
+                self.screen.blit(rectangle_2, rectangle_2_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label2 = str(numbers[posNumGuess2])
-            label2 = self.font.render(label2, 1, (0, 0, 0))
-            self.screen.blit(label2, ((rectangle_2_rect.centerx - (label2.get_rect().width / 2)), (rectangle_2_rect.centery - (label2.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label2 = str(numbers[posNumGuess2])
+                label2 = self.font.render(label2, 1, (0, 0, 0))
+                self.screen.blit(label2, ((rectangle_2_rect.centerx - (label2.get_rect().width / 2)), (rectangle_2_rect.centery - (label2.get_rect().height / 2))))
 
-            # Sticky Note 3
-            self.screen.blit(rectangle_3, rectangle_3_rect)
+                # Sticky Note 3
+                self.screen.blit(rectangle_3, rectangle_3_rect)
 
-            self.font = pg.font.Font(None, 70)
-            self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
-            self.screen.blit(self.labelRandom, ((rectangle_3_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_3_rect.centery - (self.labelRandom.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
+                self.screen.blit(self.labelRandom, ((rectangle_3_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_3_rect.centery - (self.labelRandom.get_rect().height / 2))))
 
-            # Timer level 2
-            self.timer_lvl2 -= self.dt
+                # Timer level 2
+                self.timer_lvl2 -= self.dt
 
-            self.font = pg.font.Font(None, 30)
-            txt = self.font.render("Timer: " + str(round(self.timer_lvl2, 0)), True, black)
-            self.screen.blit(txt, (30, 30))
+                self.font = pg.font.Font(None, 30)
+                txt = self.font.render("Timer: " + str(round(self.timer_lvl2, 0)), True, black)
+                self.screen.blit(txt, (30, 30))
 
-            if self.timer_lvl2 <= 0:
-                self.problemFailed = True
+                if self.timer_lvl2 <= 0:
+                    self.problemFailed = True
 
-        elif self.level is 3:
-            if posNum is 0:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-            elif posNum is 1:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            elif posNum is 2:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
-            self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
-            self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
+            elif self.level is 3 and self.firstend:
+                if posNum is 0:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                elif posNum is 1:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                elif posNum is 2:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
+                self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
 
-            # Sticky Note 2
-            self.screen.blit(rectangle_2, rectangle_2_rect)
+                # Sticky Note 2
+                self.screen.blit(rectangle_2, rectangle_2_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label1 = str(numbers[posNumGuess1])
-            label1 = self.font.render(label1, 1, (0, 0, 0))
-            self.screen.blit(label1, ((rectangle_2_rect.centerx - (label1.get_rect().width / 2)), (rectangle_2_rect.centery - (label1.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label1 = str(numbers[posNumGuess1])
+                label1 = self.font.render(label1, 1, (0, 0, 0))
+                self.screen.blit(label1, ((rectangle_2_rect.centerx - (label1.get_rect().width / 2)), (rectangle_2_rect.centery - (label1.get_rect().height / 2))))
 
-            # Sticky Note 3
-            self.screen.blit(rectangle_3, rectangle_3_rect)
+                # Sticky Note 3
+                self.screen.blit(rectangle_3, rectangle_3_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label2 = str(numbers[posNumGuess2])
-            label2 = self.font.render(label2, 1, (0, 0, 0))
-            self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label2 = str(numbers[posNumGuess2])
+                label2 = self.font.render(label2, 1, (0, 0, 0))
+                self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
 
-            # Sticky Note 1
-            self.screen.blit(rectangle_1, rectangle_1_rect)
+                # Sticky Note 1
+                self.screen.blit(rectangle_1, rectangle_1_rect)
 
-            self.font = pg.font.Font(None, 70)
-            self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
-            self.screen.blit(self.labelRandom, ((rectangle_1_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_1_rect.centery - (self.labelRandom.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
+                self.screen.blit(self.labelRandom, ((rectangle_1_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_1_rect.centery - (self.labelRandom.get_rect().height / 2))))
 
-            # Timer level 3
-            self.timer_lvl3 -= self.dt
+                # Timer level 3
+                self.timer_lvl3 -= self.dt
 
-            self.font = pg.font.Font(None, 30)
-            txt = self.font.render("Timer: " + str(round(self.timer_lvl3, 0)), True, black)
-            self.screen.blit(txt, (30, 30))
+                self.font = pg.font.Font(None, 30)
+                txt = self.font.render("Timer: " + str(round(self.timer_lvl3, 0)), True, black)
+                self.screen.blit(txt, (30, 30))
 
-            if self.timer_lvl3 <= 0:
-                self.problemFailed = True
+                if self.timer_lvl3 <= 0:
+                    self.problemFailed = True
 
-        elif self.level is 4:
-            if posNum is 0:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-            elif posNum is 1:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            elif posNum is 2:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
-            self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
-            self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
+            elif self.level is 4 and self.firstend:
+                if posNum is 0:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 167.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                elif posNum is 1:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 355.5, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                elif posNum is 2:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 543.25, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                self.draw.rt(self.screen, sort_answer_1, 70, None, black, 261.25, problem_height, 1)
+                self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 449.375, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 630, problem_height, 1)
 
-            # Sticky Note 2
-            self.screen.blit(rectangle_1, rectangle_1_rect)
+                # Sticky Note 2
+                self.screen.blit(rectangle_1, rectangle_1_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label1 = str(numbers[posNumGuess1])
-            label1 = self.font.render(label1, 1, (0, 0, 0))
-            self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label1 = str(numbers[posNumGuess1])
+                label1 = self.font.render(label1, 1, (0, 0, 0))
+                self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
 
-            # Sticky Note 3
-            self.screen.blit(rectangle_3, rectangle_3_rect)
+                # Sticky Note 3
+                self.screen.blit(rectangle_3, rectangle_3_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label2 = str(numbers[posNumGuess2])
-            label2 = self.font.render(label2, 1, (0, 0, 0))
-            self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label2 = str(numbers[posNumGuess2])
+                label2 = self.font.render(label2, 1, (0, 0, 0))
+                self.screen.blit(label2, ((rectangle_3_rect.centerx - (label2.get_rect().width / 2)), (rectangle_3_rect.centery - (label2.get_rect().height / 2))))
 
-            # Sticky Note 1
-            self.screen.blit(rectangle_2, rectangle_2_rect)
+                # Sticky Note 1
+                self.screen.blit(rectangle_2, rectangle_2_rect)
 
-            self.font = pg.font.Font(None, 70)
-            self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
-            self.screen.blit(self.labelRandom, ((rectangle_2_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_2_rect.centery - (self.labelRandom.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
+                self.screen.blit(self.labelRandom, ((rectangle_2_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_2_rect.centery - (self.labelRandom.get_rect().height / 2))))
 
-            # Timer level 3
-            self.timer_lvl4 -= self.dt
+                # Timer level 3
+                self.timer_lvl4 -= self.dt
 
-            self.font = pg.font.Font(None, 30)
-            txt = self.font.render("Timer: " + str(round(self.timer_lvl4, 0)), True, black)
-            self.screen.blit(txt, (30, 30))
+                self.font = pg.font.Font(None, 30)
+                txt = self.font.render("Timer: " + str(round(self.timer_lvl4, 0)), True, black)
+                self.screen.blit(txt, (30, 30))
 
-            if self.timer_lvl4 <= 0:
-                self.problemFailed = True
+                if self.timer_lvl4 <= 0:
+                    self.problemFailed = True
 
-        elif self.level is 5:
-            if posNum is 0:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-            elif posNum is 1:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
-                if posNumGuess1 is 2:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            elif posNum is 2:
-                self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
-                if posNumGuess1 is 0:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
-                if posNumGuess1 is 1:
-                    self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
-                    self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
-            self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
-            self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
-            self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
+            elif self.level is 5 and self.firstend:
+                if posNum is 0:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 167.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                elif posNum is 1:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 355.5, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                    if posNumGuess1 is 2:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                elif posNum is 2:
+                    self.draw.rt(self.screen, numbers[posNum], 70, None, black, 543.25, problem_height, 1)
+                    if posNumGuess1 is 0:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                    if posNumGuess1 is 1:
+                        self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                self.draw.rt(self.screen, sort_answer_1, 70, None, black, 261.25, problem_height, 1)
+                self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 449.375, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 630, problem_height, 1)
 
-            # Sticky Note 2
-            self.screen.blit(rectangle_1, rectangle_1_rect)
+                # Sticky Note 2
+                self.screen.blit(rectangle_1, rectangle_1_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label1 = str(numbers[posNumGuess1])
-            label1 = self.font.render(label1, 1, (0, 0, 0))
-            self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label1 = str(numbers[posNumGuess1])
+                label1 = self.font.render(label1, 1, (0, 0, 0))
+                self.screen.blit(label1, ((rectangle_1_rect.centerx - (label1.get_rect().width / 2)), (rectangle_1_rect.centery - (label1.get_rect().height / 2))))
 
-            # Sticky Note 3
-            self.screen.blit(rectangle_2, rectangle_2_rect)
+                # Sticky Note 3
+                self.screen.blit(rectangle_2, rectangle_2_rect)
 
-            self.font = pg.font.Font(None, 70)
-            label2 = str(numbers[posNumGuess2])
-            label2 = self.font.render(label2, 1, (0, 0, 0))
-            self.screen.blit(label2, ((rectangle_2_rect.centerx - (label2.get_rect().width / 2)), (rectangle_2_rect.centery - (label2.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                label2 = str(numbers[posNumGuess2])
+                label2 = self.font.render(label2, 1, (0, 0, 0))
+                self.screen.blit(label2, ((rectangle_2_rect.centerx - (label2.get_rect().width / 2)), (rectangle_2_rect.centery - (label2.get_rect().height / 2))))
 
-            # Sticky Note 1
-            self.screen.blit(rectangle_3, rectangle_3_rect)
+                # Sticky Note 1
+                self.screen.blit(rectangle_3, rectangle_3_rect)
 
-            self.font = pg.font.Font(None, 70)
-            self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
-            self.screen.blit(self.labelRandom, ((rectangle_3_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_3_rect.centery - (self.labelRandom.get_rect().height / 2))))
+                self.font = pg.font.Font(None, 70)
+                self.labelRandom = self.font.render(labelRandom, 1, (0, 0, 0))
+                self.screen.blit(self.labelRandom, ((rectangle_3_rect.centerx - (self.labelRandom.get_rect().width / 2)), (rectangle_3_rect.centery - (self.labelRandom.get_rect().height / 2))))
 
-            # Timer level 3
-            self.timer_lvl5 -= self.dt
+                # Timer level 3
+                self.timer_lvl5 -= self.dt
 
-            self.font = pg.font.Font(None, 30)
-            txt = self.font.render("Timer: " + str(round(self.timer_lvl5, 0)), True, black)
-            self.screen.blit(txt, (30, 30))
+                self.font = pg.font.Font(None, 30)
+                txt = self.font.render("Timer: " + str(round(self.timer_lvl5, 0)), True, black)
+                self.screen.blit(txt, (30, 30))
 
-            if self.timer_lvl5 <= 0:
-                self.problemFailed = True
+                if self.timer_lvl5 <= 0:
+                    self.problemFailed = True
 
-        # Check button
-        pg.draw.rect(self.screen, (0, 0, 0), checkButton)
+            # Check button
+            pg.draw.rect(self.screen, (0, 0, 0), checkButton)
 
-        self.font = pg.font.Font(None, 50)
-        labelcheck = self.font.render("Check answer", 1, (255, 255, 255))
-        self.screen.blit(labelcheck, ((checkButton.centerx - (labelcheck.get_rect().width / 2)), (checkButton.centery - (labelcheck.get_rect().height / 2))))
-
-        # Win screen and lose screen
-        if self.problemCompleted:
-            self.screen.fill(black)
             self.font = pg.font.Font(None, 50)
-            label_done_1 = self.font.render("Good job!", 1, (255, 255, 255))
-            self.screen.blit(label_done_1, ((400 - (label_done_1.get_rect().width / 2) + 0),(300 - (label_done_1.get_rect().height / 2) - 100)))
+            labelcheck = self.font.render("Check answer", 1, (255, 255, 255))
 
-            label_done_2 = self.font.render("Press ESCAPE to go back to", 1, (255, 255, 255))
-            self.screen.blit(label_done_2, ((400 - (label_done_2.get_rect().width / 2) + 0),(300 - (label_done_2.get_rect().height / 2) - 0)))
-            label_done_3 = self.font.render("the main menu.", 1, (255, 255, 255))
-            self.screen.blit(label_done_3, ((400 - (label_done_3.get_rect().width / 2) + 0),(300 - (label_done_3.get_rect().height / 2) + 40)))
-            # print("COMPLETED")
-            # print(str(self.problemCompleted))
-        elif self.problemFailed:
-            self.screen.fill(black)
-            self.font = pg.font.Font(None, 50)
-            label_done_1 = self.font.render("You failed!", 1, (255, 255, 255))
-            self.screen.blit(label_done_1, ((400 - (label_done_1.get_rect().width / 2) + 0),(300 - (label_done_1.get_rect().height / 2) - 100)))
+            if self.resetStatus:
+                print(str(self.timer_reset))
+                self.font = pg.font.Font(None, 50)
+                labelcheck = self.font.render("Try again!", 1, (255, 0, 0))
 
-            label_done_2 = self.font.render("Press ESCAPE to go back to", 1, (255, 255, 255))
-            self.screen.blit(label_done_2, ((400 - (label_done_2.get_rect().width / 2) + 0),(300 - (label_done_2.get_rect().height / 2) - 0)))
-            label_done_3 = self.font.render("the main menu.", 1, (255, 255, 255))
-            self.screen.blit(label_done_3, ((400 - (label_done_3.get_rect().width / 2) + 0),(300 - (label_done_3.get_rect().height / 2) + 40)))
-            # print("FAILED")
-            # print(str(self.problemFailed))
+                self.timer_reset -= self.dt
 
-        pg.display.flip()
+                if self.timer_reset <= 0:
+                    self.resetStatus = False
+                    self.timer_reset = 3
+            self.screen.blit(labelcheck, ((checkButton.centerx - (labelcheck.get_rect().width / 2)), (checkButton.centery - (labelcheck.get_rect().height / 2))))
 
-        self.dt = self.clock.tick(30) / 1000  # / 1000 to convert to seconds.
+            # Win screen and lose screen
+            if self.problemCompleted and self.firstend:
+                pg.mixer.music.fadeout(200)
+                self.win.play(loops=0)
+                self.screen.fill(black)
+                self.font = pg.font.Font(None, 50)
+                label_done_1 = self.font.render("Good job!", 1, (255, 255, 255))
+                self.screen.blit(label_done_1, ((400 - (label_done_1.get_rect().width / 2) + 0),(300 - (label_done_1.get_rect().height / 2) - 100)))
+
+                label_done_2 = self.font.render("Press ESCAPE to go back to", 1, (255, 255, 255))
+                self.screen.blit(label_done_2, ((400 - (label_done_2.get_rect().width / 2) + 0),(300 - (label_done_2.get_rect().height / 2) - 0)))
+                label_done_3 = self.font.render("the main menu.", 1, (255, 255, 255))
+                self.screen.blit(label_done_3, ((400 - (label_done_3.get_rect().width / 2) + 0),(300 - (label_done_3.get_rect().height / 2) + 40)))
+                self.firstend = False
+
+                # print("COMPLETED")
+                # print(str(self.problemCompleted))
+            elif self.problemFailed and self.firstend:
+                pg.mixer.music.fadeout(200)
+                self.lose.play(loops=0)
+                self.screen.fill(black)
+                self.font = pg.font.Font(None, 50)
+                label_done_1 = self.font.render("You failed!", 1, (255, 255, 255))
+                self.screen.blit(label_done_1, ((400 - (label_done_1.get_rect().width / 2) + 0),(300 - (label_done_1.get_rect().height / 2) - 100)))
+
+                label_done_2 = self.font.render("Press ESCAPE to go back to", 1, (255, 255, 255))
+                self.screen.blit(label_done_2, ((400 - (label_done_2.get_rect().width / 2) + 0),(300 - (label_done_2.get_rect().height / 2) - 0)))
+                label_done_3 = self.font.render("the main menu.", 1, (255, 255, 255))
+                self.screen.blit(label_done_3, ((400 - (label_done_3.get_rect().width / 2) + 0),(300 - (label_done_3.get_rect().height / 2) + 40)))
+                self.firstend = False
+
+                # print("FAILED")
+                # print(str(self.problemFailed))
+
+            pg.display.flip()
+
+            self.dt = self.clock.tick(30) / 1000  # / 1000 to convert to seconds.
 
 class Minigame(object):
     state = True
@@ -1686,12 +1920,12 @@ class Minigame(object):
 
     def render(self):
         #self.screen.fill((12, 75, 22))
-        self.screen.blit(bg, (0,0))
         self.problem.render()
         pg.display.flip()
 
     def main_loop(self):
         Minigame.state = True
+        pg.mixer.music.play(loops=1)
         while Minigame.state:
             self.problem.control()
             self.render()
@@ -1702,15 +1936,18 @@ class Minigame(object):
 def main():
     pg.init()
     pg.font.init()
+    pg.mixer.init()
     pg.display.set_caption(screen_caption)
     # Delete this for prod
     pg.display.set_mode(screen_size)
     # FULLSCREEN MODE
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(1)
+    pg.mixer.music.load("assets/music.mp3")
+    pg.mixer.music.set_volume(0.5)
     pg.key.set_repeat(500, 30)
     Minigame().main_loop()
-    pg.display.set_caption("School Roamer")
+    pg.display.set_caption("School Roamer - Amar's minigame")
     pg.mouse.set_visible(0)
 
 

@@ -48,5 +48,5 @@ def gen_problem(self):
         y = x - c
         answer = y
 
-    print("Returning level 1 problem...")
+    print("Returning level 3 problem...")
     return a, b, c, sort_answer, sort_answer_1, sort_answer_2, answer, extra
