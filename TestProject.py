@@ -5,11 +5,15 @@ from Ball import Ball
 
 WIDTH = 800
 HEIGHT = 600
-PIECE_SIZE = 85
+PIECE_SIZE = 63
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
 class Main:
-    def __init__(self,num):
+
+    def __init__(self, num):
         self.selected_item = None
+        self.currentLevel = num
         self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
         self.regular_row = ['-', '-', '-', '-', '-', '-', '-']
         self.levels = [[
@@ -57,6 +61,11 @@ class Main:
         self.balls = py.sprite.Group()
         self.gen()
         self.move_count = 0
+        self.levelComplete = False
+        self.win = py.mixer.Sound("Resources/Audio/winsound.wav")
+        self.reset = py.mixer.Sound("Resources/Audio/reset.wav")
+        self.post = py.mixer.Sound("Resources/Audio/post.ogg")
+
 
     def click(self, evt, ball):
         mouse_x, mouse_y = py.mouse.get_pos()
@@ -65,10 +74,10 @@ class Main:
             self.selected_item = [row, col]
             if self.point_collision(evt.pos, ball.rect, ball.mask):
                 ball.dragging = True
-                mx, my = event.pos
+                mx, my = evt.pos
                 ball.offset_x = ball.rect.x - mx
                 ball.offset_y = ball.rect.y - my
-        elif event.type == MOUSEBUTTONUP:
+        elif evt.type == MOUSEBUTTONUP:
             row, col = self.getX(mouse_x), self.getY(mouse_y)
             if self.selected_item:
                 move = self.validate_move(self.selected_item, row, col)
@@ -80,9 +89,9 @@ class Main:
                     #print("invalid ")
                     self.selected_item = None
             ball.dragging = False
-        elif event.type == MOUSEMOTION:
+        elif evt.type == MOUSEMOTION:
             if ball.dragging:
-                mx, my = event.pos
+                mx, my = evt.pos
                 ball.rect.x = mx + ball.offset_x
                 ball.rect.y = my + ball.offset_y
 
@@ -115,31 +124,41 @@ class Main:
             self.coordinates[jump[0]][jump[1]] = '-'
             self.selected_item = [row, col]
             self.selected_item = None
+            self.reset.play(loops=0)
 
-
-    def update(self):
+    def update(self, event):
+        if len(self.balls) == 1:
+            # set global minigame bool true
+            self.levelComplete = True
+            pass
         for sprite in self.balls:
             self.click(event, sprite)
         self.balls.update()
 
-    def draw(self):
+
+    def draw(self, screen):
+        bg = py.image.load("Resources/bg.png").convert_alpha()
+        screen.blit(bg, (0, 0))
+        ''' ONSCREEN MOVE COUNT
         color = (255, 0, 0)
         font = py.font.SysFont("comicsansms", 40)
         mark_text = font.render('move count:' + str(self.move_count), True, color)
         screen.blit(mark_text, (10, 50))
+        '''
+
         for index, x in enumerate(self.odd_row):
             if x != 'x':
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 0, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
         for index, x in enumerate(self.regular_row):
             if x != 'x':
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 2 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 3 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 4 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 2 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 3 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 4 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
         for index, x in enumerate(self.odd_row):
             if x != 'x':
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 5 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, WHITE, (100 + (index * PIECE_SIZE), 6 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE),30 + 5 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE),30 + 6 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
         self.balls.draw(screen)
 
     def point_collision(self, point, rect, mask):
@@ -156,30 +175,31 @@ class Main:
             for c in range(len(self.coordinates[r])):
                 mark = self.coordinates[r][c]
                 if mark != '-' and mark != 'x':
-                    x = 100 + (r * PIECE_SIZE) + (PIECE_SIZE / 2)
-                    y = c * PIECE_SIZE + (PIECE_SIZE / 2)
-                    Ball("Resources/ball.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
+                    x = 162 + (r * PIECE_SIZE) + (PIECE_SIZE / 2)
+                    y = 30 + c * PIECE_SIZE + (PIECE_SIZE / 2)
+                    Ball("Resources/StickyNoteO.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
                          [self.getX(x), self.getY(y)])
+
     def getX(self, pos):
         x = pos
         for i in range(0, 7):
-            if x < 100 + (i * PIECE_SIZE):
+            if x < 162 + (i * PIECE_SIZE):
                 return i - 1
         return 6
 
     def getY(self, pos):
         y = pos
         for i in range(0, 7):
-            if y < i * PIECE_SIZE:
+            if y < 30 + i * PIECE_SIZE:
                 return i - 1
         return 6
 
 
-py.init()
+'''py.init()
 size = (WIDTH, HEIGHT)
 screen = py.display.set_mode(size)
 clock = py.time.Clock()
-game = Main(4)
+game = Main(0)
 done = False
 while not done:
     for event in py.event.get():
@@ -187,7 +207,7 @@ while not done:
             done = True
         if event.type == py.KEYDOWN:
             if event.key == K_q:
-                game = Main(4)
+                game = Main(0)
         if event.type == py.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = py.mouse.get_pos()
     game.update()
@@ -195,4 +215,4 @@ while not done:
     game.draw()
     py.display.flip()
     clock.tick(60)
-py.quit()
+py.quit()'''
