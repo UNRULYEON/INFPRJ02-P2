@@ -59,7 +59,7 @@ class Problem(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        self.level = 1 # Change to mg.level when in prod
+        self.level = 3 # Change to mg.level when in prod
         self.minigame_amar = mg.minigame_amar
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
@@ -69,10 +69,10 @@ class Problem(object):
         print("Completed?:  " + str(self.minigame_amar))
         self.clock = pg.time.Clock()
         self.timer_lvl1 = 15
-        self.timer_lvl2 = 30
-        self.timer_lvl3 = 100
-        self.timer_lvl4 = 100
-        self.timer_lvl5 = 100
+        self.timer_lvl2 = 15
+        self.timer_lvl3 = 15
+        self.timer_lvl4 = 30
+        self.timer_lvl5 = 30
         self.timer_reset = 3
         self.dt = 0
         global checkButton
@@ -579,7 +579,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -599,7 +599,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -619,7 +619,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -639,7 +639,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -728,7 +728,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -748,7 +748,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -768,7 +768,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -788,7 +788,7 @@ class Problem(object):
                     self.problemCompleted = True
                 else:
                     print("Wrong!")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 137.75
                     rectangle_1_rect.y = 300
 
@@ -879,7 +879,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -890,7 +890,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -912,7 +912,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -923,7 +923,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -945,7 +945,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -956,7 +956,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -978,7 +978,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -989,7 +989,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1011,7 +1011,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1022,7 +1022,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1044,7 +1044,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1055,7 +1055,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1077,7 +1077,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1088,7 +1088,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1110,7 +1110,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1121,7 +1121,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1212,7 +1212,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1223,7 +1223,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1245,7 +1245,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1256,7 +1256,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1276,9 +1276,9 @@ class Problem(object):
                     if a == answer:
                         print("Correct!")
                         self.problemCompleted = True
-                        self.reset.play(loops=0)
                     else:
                         print("Wrong!")
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1289,7 +1289,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1311,7 +1311,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1322,7 +1322,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1344,7 +1344,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1355,7 +1355,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1377,7 +1377,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1388,7 +1388,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1410,7 +1410,7 @@ class Problem(object):
                         self.problemCompleted = True
                     else:
                         print("Wrong!")
-                        self.reset.play(loops=0)
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1421,7 +1421,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1441,9 +1441,9 @@ class Problem(object):
                     if a == answer:
                         print("Correct!")
                         self.problemCompleted = True
-                        self.reset.play(loops=0)
                     else:
                         print("Wrong!")
+                        self.reset()
                         rectangle_1_rect.x = 117.75
                         rectangle_1_rect.y = 300
 
@@ -1454,7 +1454,7 @@ class Problem(object):
                         rectangle_3_rect.y = 300
                 else:
                     print("Not all sticky notes were placed, try again")
-                    self.reset.play(loops=0)
+                    self.reset()
                     rectangle_1_rect.x = 117.75
                     rectangle_1_rect.y = 300
 
@@ -1815,7 +1815,7 @@ class Problem(object):
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 261.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 449.375, problem_height, 1)
-                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 630, problem_height, 1)
+                self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 610, problem_height, 1)
 
                 # Sticky Note 2
                 self.screen.blit(rectangle_1, rectangle_1_rect)
@@ -1871,6 +1871,7 @@ class Problem(object):
             # Win screen and lose screen
             if self.problemCompleted and self.firstend:
                 pg.mixer.music.fadeout(200)
+                self.win.set_volume(0.5)
                 self.win.play(loops=0)
                 self.screen.fill(black)
                 self.font = pg.font.Font(None, 50)
@@ -1887,6 +1888,7 @@ class Problem(object):
                 # print(str(self.problemCompleted))
             elif self.problemFailed and self.firstend:
                 pg.mixer.music.fadeout(200)
+                self.lose.set_volume(0.5)
                 self.lose.play(loops=0)
                 self.screen.fill(black)
                 self.font = pg.font.Font(None, 50)

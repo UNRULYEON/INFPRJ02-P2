@@ -18,3 +18,5 @@ edugame\.log
 *.log
 
 \.idea/
+
+__pycache__/

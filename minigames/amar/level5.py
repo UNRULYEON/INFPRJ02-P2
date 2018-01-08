@@ -16,7 +16,10 @@ def gen_problem(self):
     sort_answer_1 = ""
     sort_answer_2 = ""
 
-    a, b, c, extra = random.sample(range(1, 51), 4)
+    a = random.randrange(2, 42, 2)
+    b = random.randrange(2, 42, 2)
+    c = random.randrange(2, 42, 2)
+    extra = random.randrange(2, 42, 2)
 
     sort_answer = randint(1, 8)
     if sort_answer is 1:
