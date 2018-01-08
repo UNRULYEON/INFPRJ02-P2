@@ -1,10 +1,9 @@
 import os, sys
 import logging
 import pygame as pg
-import MainGame as mg
-from pygame.locals import *
+import MainGame
 import pyganim
-import LoadAssets as la
+import minigames.amar.minigameAmar
 
 class Player(object):
 
@@ -15,8 +14,8 @@ class Player(object):
         pg.sprite.Sprite.__init__(self)
         self.screen = pg.display.get_surface()
         self.speed = 7
-        self.x = ((mg.screen_width // 2) - 48)
-        self.y = ((mg.screen_height // 2) + 100)
+        self.x = ((MainGame.screen_width // 2) - 48)
+        self.y = ((MainGame.screen_height // 2) + 100)
         self.state = "idle"
         self.last_state = "start"
 
@@ -73,7 +72,10 @@ class Player(object):
         self.state = self.last_state = "moveright"
 
     def space(self):
-        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and mg.minigame_vlad is False:
+
+        minigame_amar = MainGame.Game.getMinigameAmar(MainGame.Game)
+
+        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and Game.minigame_vlad is False:
             print(str(self.x), str(self.y))
             logging.info("LAUNCHING GAME 2")
             print("LAUNCHING VLAD'S MINIGAME")
@@ -82,18 +84,20 @@ class Player(object):
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and mg.minigame_amar is False:
+        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
             print(str(self.x), str(self.y))
             logging.info("LAUNCHING GAME 3")
             print("LAUNCHING AMAR'S MINIGAME")
 
-
+            minigame_amar = minigames.amar.minigameAmar.main()
+            print("MainGame boolean: " + str(minigame_amar))
+            MainGame.Game.setMinigameAmar(self, minigame_amar)
             
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and mg.minigame_armand is False:
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and Game.minigame_armand is False:
             print(str(self.x), str(self.y))
             logging.info("LAUNCHING GAME 4")
             print("LAUNCHING ARMAND'S MINIGAME")

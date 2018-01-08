@@ -19,10 +19,13 @@ screen_caption = "School Roamer - Amar"
 screen_size = screen_width, screen_height = 800, 600
 
 # ASSETS
-bg, bg_rect = la.asset("bg.png")
+bg = pg.image.load("minigames/amar/assets/bg.png")
+bg_rect = bg.get_rect()
 black = (0, 0, 0)
 white =(255, 255, 255)
-problem_height = 167.625
+problem_height = 167.6253
+
+completed = False
 
 def asset(name):
     fullname = os.path.join("assets", name)
@@ -59,14 +62,12 @@ class Problem(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        self.level = 3 # Change to mg.level when in prod
-        self.minigame_amar = mg.minigame_amar
+        self.level = mg.level
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
         self.font = pg.font.Font(None, 30)
         self.fsize = 16
         print("Player is level: " + str(self.level))
-        print("Completed?:  " + str(self.minigame_amar))
         self.clock = pg.time.Clock()
         self.timer_lvl1 = 15
         self.timer_lvl2 = 15
@@ -83,10 +84,10 @@ class Problem(object):
         self.problemFailed = False
         self.firstend = True
         self.resetStatus = False
-        self.win = pg.mixer.Sound("assets/win.ogg")
-        self.lose = pg.mixer.Sound("assets/lose.ogg")
-        self.ee = pg.mixer.Sound("assets/ee.ogg")
-        self.resetSound = pg.mixer.Sound("assets/reset.ogg")
+        self.win = pg.mixer.Sound("minigames/amar/assets/win.ogg")
+        self.lose = pg.mixer.Sound("minigames/amar/assets/lose.ogg")
+        self.ee = pg.mixer.Sound("minigames/amar/assets/ee.ogg")
+        self.resetSound = pg.mixer.Sound("minigames/amar/assets/reset.ogg")
         self.reinit()
 
     def reinit(self):
@@ -142,19 +143,22 @@ class Problem(object):
 
             posNum = numbers.index(choiceNumbers[0])
 
-            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_1_rect = rectangle_1.get_rect()
             rectangle_1_rect.x = 137.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
-            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_2_rect = rectangle_2.get_rect()
             rectangle_2_rect.x = 350
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             labelRandom = str(extra)
 
-            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_3_rect = rectangle_3.get_rect()
             rectangle_3_rect.x = 562.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
@@ -1870,6 +1874,10 @@ class Problem(object):
 
             # Win screen and lose screen
             if self.problemCompleted and self.firstend:
+
+                global completed
+
+                completed = True
                 pg.mixer.music.fadeout(200)
                 self.win.set_volume(0.5)
                 self.win.play(loops=0)
@@ -1887,6 +1895,8 @@ class Problem(object):
                 # print("COMPLETED")
                 # print(str(self.problemCompleted))
             elif self.problemFailed and self.firstend:
+
+                completed = False
                 pg.mixer.music.fadeout(200)
                 self.lose.set_volume(0.5)
                 self.lose.play(loops=0)
@@ -1933,9 +1943,9 @@ class Minigame(object):
             self.render()
             self.clock.tick(self.fps)
 
-
 # INIT MINIGAME
 def main():
+    global completed
     pg.init()
     pg.font.init()
     pg.mixer.init()
@@ -1945,12 +1955,21 @@ def main():
     # FULLSCREEN MODE
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(1)
-    pg.mixer.music.load("assets/music.mp3")
+    pg.mixer.music.load("minigames/amar/assets/music.mp3")
     pg.mixer.music.set_volume(0.5)
     pg.key.set_repeat(500, 30)
     Minigame().main_loop()
-    pg.display.set_caption("School Roamer - Amar's minigame")
+    game = Problem()
+    if completed is True:
+        print("Player completed the level")
+        return True
+    elif completed is False:
+        print("Player failed the level")
+        return False
+    else:
+        print("err")
     pg.mouse.set_visible(0)
+    print("test")
 
 
 if __name__ == "__main__":

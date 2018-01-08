@@ -26,19 +26,15 @@ logging.info("New instance of EduGame.py")
 screen_size = screen_width, screen_height = 800, 600
 screen_caption = "School Roamer"
 
-# GAME VARIABLES 
-level = 1
-minigame_vlad = False
-minigame_amar = False
-minigame_armand = False
-
 # COLORS
 white = (255, 255, 255)
 
 # ASSETS
 bg, bg_rect = la.asset("bg.png")
 
+
 class Game(object):
+
     # CONSTRUCTOR
     def __init__(self):
         logging.info("LOADING GAME")
@@ -57,6 +53,14 @@ class Game(object):
         self.fsize = 16
 
         self.screen.blit(bg, (0, 0))
+
+        # GAME VARIABLES
+
+        self.level = 1
+        self.minigame_vlad = False
+        self.minigame_amar = False
+        self.minigame_armand = False
+
         pg.display.flip()
 
     def control(self):
@@ -113,31 +117,33 @@ class Game(object):
                 if event.key == K_SPACE:
                     logging.info("Space is being held down")
                     self.player.space()
+                if event.key == K_q:
+                    print("Level: " + str(self.level))
+                    print("Vlad: " + str(self.minigame_vlad))
+                    print("Amar: " + str(self.minigame_amar))
+                    print("Armand: " + str(self.minigame_armand))
 
-    def check(selfs):
-        global level
-        global minigame_vlad
-        global minigame_amar
-        global minigame_armand
-
-        level = level
-        minigame_vlad = minigame_vlad
-        minigame_amar = minigame_amar
-        minigame_armand = minigame_armand
-
-        if minigame_vlad and minigame_amar and minigame_armand:
+    def check(self):
+        if self.minigame_vlad and self.minigame_amar and self.minigame_armand:
             logging.info("NEXT LEVEL, SETTING MINIGAME COMPLETED BOOLEANS TO FALSE")
-            level += 1
-            minigame_vlad = minigame_amar = minigame_armand = False
-        if level is 5:
+            self.level += 1
+            self.minigame_vlad = self.minigame_amar = self.minigame_armand = False
+        if self.level is 5:
             logging.info("YOU'VE REACHED LEVEL 5, QUITTING...")
             pg.quit()
             sys.exit()
 
+    def getMinigameAmar(self):
+        self.minigame_amar = self.minigame_amar
+        return self.minigame_amar
+
+    def setMinigameAmar(self, boolean):
+        self.minigame_amar = boolean
+
     def render(self):
         self.screen.blit(bg, (0,0))
 
-        self.draw.rtcenter(self.screen, "Level: " + str(level), 30, None, white, 355, -280, 1)
+        self.draw.rtcenter(self.screen, "Level: " + str(self.level), 30, None, white, 355, -280, 1)
         if self.player.x > 230 and self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 1
             # Name minigame
@@ -145,7 +151,7 @@ class Game(object):
 
             # Completed?
 
-            if minigame_vlad is True:
+            if self.minigame_vlad is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
@@ -161,7 +167,7 @@ class Game(object):
             self.draw.rtcenter(self.screen, "MINIGAME AMAR", 40, None, white, 0, -240, 0)
 
             # Completed?
-            if minigame_amar is True:
+            if self.minigame_amar is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
@@ -178,7 +184,7 @@ class Game(object):
 
             # Completed?
 
-            if minigame_armand is True:
+            if self.minigame_armand is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
