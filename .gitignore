@@ -16,3 +16,5 @@ __pycache__/pyganim\.cpython-36\.pyc
 edugame\.log
 
 *.log
+
+*.xml
