@@ -70,7 +70,7 @@ class Player(object):
         self.state = self.last_state = "moveright"
 
     def space(self):
-        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and Game.minigame_vlad is False:
+        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and MainGame.Game.minigame_vlad is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING VLAD'S MINIGAME")
             
@@ -78,19 +78,19 @@ class Player(object):
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
+        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and MainGame.Game().minigame_amar is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING AMAR'S MINIGAME")
 
-            minigame_amar = minigames.amar.minigameAmar.main()
-            print("MainGame boolean: " + str(minigame_amar))
-            MainGame.Game.setMinigameAmar(self, minigame_amar)
+            minigame_amar_boolean = minigames.amar.minigameAmar.main()
+            print("MainGame boolean: " + str(minigame_amar_boolean))
+            MainGame.Game.setMinigameAmar(self, minigame_amar_boolean)
             
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and Game.minigame_armand is False:
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and MainGame.Game.minigame_armand is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING ARMAND'S MINIGAME")
 
