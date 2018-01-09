@@ -1,7 +1,7 @@
 import pygame as py
 import sys
 from pygame.locals import *
-from Ball import Ball
+from minigames.vlad.Ball import Ball
 
 WIDTH = 800
 HEIGHT = 600
@@ -9,6 +9,7 @@ PIECE_SIZE = 63
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
+levelComplete = False
 class Main:
 
     def __init__(self, num):
@@ -57,14 +58,13 @@ class Main:
 ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
 ['x', 'x', '-', 'O', '-', 'x', 'x']],
 ]
-        self.coordinates = self.levels[num]
+        self.coordinates = self.levels[num -1]
         self.balls = py.sprite.Group()
         self.gen()
         self.move_count = 0
-        self.levelComplete = False
-        self.win = py.mixer.Sound("Resources/Audio/winsound.wav")
-        self.reset = py.mixer.Sound("Resources/Audio/reset.wav")
-        self.post = py.mixer.Sound("Resources/Audio/post.ogg")
+        self.win = py.mixer.Sound("minigames/vlad/Resources/Audio/winsound.wav")
+        self.reset = py.mixer.Sound("minigames/vlad/Resources/Audio/reset.wav")
+        self.post = py.mixer.Sound("minigames/vlad/Resources/Audio/post.ogg")
 
 
     def click(self, evt, ball):
@@ -127,17 +127,16 @@ class Main:
             self.reset.play(loops=0)
 
     def update(self, event):
-        if len(self.balls) == 1:
-            # set global minigame bool true
-            self.levelComplete = True
-            pass
-        for sprite in self.balls:
-            self.click(event, sprite)
-        self.balls.update()
+    	global levelComplete
+    	if len(self.balls) == 1:
+            levelComplete = True
+    	for sprite in self.balls:
+    		self.click(event, sprite)
+    	self.balls.update()
 
 
     def draw(self, screen):
-        bg = py.image.load("Resources/bg.png").convert_alpha()
+        bg = py.image.load("minigames/vlad/Resources/bg.png").convert_alpha()
         screen.blit(bg, (0, 0))
         ''' ONSCREEN MOVE COUNT
         color = (255, 0, 0)
@@ -177,7 +176,7 @@ class Main:
                 if mark != '-' and mark != 'x':
                     x = 162 + (r * PIECE_SIZE) + (PIECE_SIZE / 2)
                     y = 30 + c * PIECE_SIZE + (PIECE_SIZE / 2)
-                    Ball("Resources/StickyNoteO.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
+                    Ball("minigames/vlad/Resources/StickyNoteO.png", x - PIECE_SIZE / 2, y - PIECE_SIZE / 2, self.balls,
                          [self.getX(x), self.getY(y)])
 
     def getX(self, pos):
@@ -194,25 +193,35 @@ class Main:
                 return i - 1
         return 6
 
+class RunMinigame():
+    def main(lvl):
+        global levelComplete
+        py.init()
+        clock = py.time.Clock()
+        screen = py.display.get_surface()
+        game = Main(lvl)
+        py.mixer.music.load("minigames/vlad/Resources/Audio/bgm.wav")
+        py.mixer.music.set_volume(0.1)
+        done = False
+        py.mixer.music.play(loops=-1)
+        while not done:
+            for event in py.event.get():
+                if event.type == py.QUIT:
+                    done = True
+                if event.type == py.KEYDOWN:
+                    if event.key == K_q:
+                        game = Main(lvl)
+                if event.type == py.MOUSEBUTTONDOWN:
+                    mouse_x, mouse_y = py.mouse.get_pos()
+                game.update(event)
+                screen.fill((0, 0, 0))
+                game.draw(screen)
+                py.display.flip()
+                clock.tick(60)
+            if levelComplete is True:
+                print("Player completed the level")
+                levelComplete = False
+                return True
+        py.key.set_repeat(1, 20)
+        py.quit()
 
-'''py.init()
-size = (WIDTH, HEIGHT)
-screen = py.display.set_mode(size)
-clock = py.time.Clock()
-game = Main(0)
-done = False
-while not done:
-    for event in py.event.get():
-        if event.type == py.QUIT:
-            done = True
-        if event.type == py.KEYDOWN:
-            if event.key == K_q:
-                game = Main(0)
-        if event.type == py.MOUSEBUTTONDOWN:
-            mouse_x, mouse_y = py.mouse.get_pos()
-    game.update()
-    screen.fill((0, 0, 0))
-    game.draw()
-    py.display.flip()
-    clock.tick(60)
-py.quit()'''

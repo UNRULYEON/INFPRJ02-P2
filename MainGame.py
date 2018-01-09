@@ -168,7 +168,6 @@ class Game(object):
         while self.state:
             pg.event.pump()
             self.control()
-            print(str(pg.key.get_repeat()))
             player.Player().check()
             self.render()
             self.clock.tick(self.fps)
@@ -181,7 +180,6 @@ def main():
     pg.display.set_mode(screen_size)
     # FULLSCREEN MODE
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
-    pg.mouse.set_visible(0)
     pg.key.set_repeat(1, 20)
     #MainMenu().main_loop()
     Game().main_loop()
