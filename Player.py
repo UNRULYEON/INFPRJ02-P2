@@ -1,5 +1,4 @@
 import os, sys
-import logging
 import pygame as pg
 import MainGame
 import pyganim
@@ -9,7 +8,6 @@ class Player(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        logging.info("INIT PLAYER")
         print("INIT PLAYER")
         pg.sprite.Sprite.__init__(self)
         self.screen = pg.display.get_surface()
@@ -77,7 +75,6 @@ class Player(object):
 
         if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and Game.minigame_vlad is False:
             print(str(self.x), str(self.y))
-            logging.info("LAUNCHING GAME 2")
             print("LAUNCHING VLAD'S MINIGAME")
             
             self.upAnim.stop()
@@ -86,7 +83,6 @@ class Player(object):
             self.rightAnim.stop()
         if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
             print(str(self.x), str(self.y))
-            logging.info("LAUNCHING GAME 3")
             print("LAUNCHING AMAR'S MINIGAME")
 
             minigame_amar = minigames.amar.minigameAmar.main()
@@ -99,7 +95,6 @@ class Player(object):
             self.rightAnim.stop()
         if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and Game.minigame_armand is False:
             print(str(self.x), str(self.y))
-            logging.info("LAUNCHING GAME 4")
             print("LAUNCHING ARMAND'S MINIGAME")
 
 

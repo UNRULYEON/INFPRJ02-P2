@@ -1,5 +1,4 @@
 import os, sys
-import logging
 import pygame as pg
 import MainGame as mg
 from pygame.locals import *
