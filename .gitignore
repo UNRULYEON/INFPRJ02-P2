@@ -20,3 +20,17 @@ edugame\.log
 *.xml
 
 *.iml
+
+minigames/__pycache__/__init__\.cpython-36\.pyc
+
+minigames/amar/__pycache__/level1\.cpython-36\.pyc
+
+minigames/amar/__pycache__/level2\.cpython-36\.pyc
+
+minigames/amar/__pycache__/level3\.cpython-36\.pyc
+
+minigames/amar/__pycache__/level4\.cpython-36\.pyc
+
+minigames/amar/__pycache__/level5\.cpython-36\.pyc
+
+minigames/amar/__pycache__/minigameAmar\.cpython-36\.pyc
