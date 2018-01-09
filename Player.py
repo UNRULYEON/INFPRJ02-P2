@@ -4,11 +4,16 @@ import MainGame
 import pyganim
 import minigames.amar.minigameAmar
 
+level = 1
+minigame_vlad = False
+minigame_amar = False
+minigame_armand = False
+
 class Player(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        print("INIT PLAYER")
+        #print("INIT PLAYER")
         pg.sprite.Sprite.__init__(self)
         self.screen = pg.display.get_surface()
         self.speed = 7
@@ -23,20 +28,20 @@ class Player(object):
         self.left_standing = pg.image.load("assets/player_left.png")
         self.right_standing = pg.image.load("assets/player_right.png")
         self.upAnim = pyganim.PygAnimation([("assets/player_up_walk-1.png", .2),
-                                         ("assets/player_up.png", .1),
-                                         ("assets/player_up_walk-2.png", .2)])
+                                            ("assets/player_up.png", .1),
+                                            ("assets/player_up_walk-2.png", .2)])
 
         self.downAnim = pyganim.PygAnimation([("assets/player_down_walk-1.png", .2),
-                                         ("assets/player_down.png", .1),
-                                         ("assets/player_down_walk-2.png", .2)])
+                                              ("assets/player_down.png", .1),
+                                              ("assets/player_down_walk-2.png", .2)])
 
         self.leftAnim = pyganim.PygAnimation([("assets/player_left_walk-1.png", .2),
-                                         ("assets/player_left.png", .1),
-                                         ("assets/player_left_walk-2.png", .2)])
+                                              ("assets/player_left.png", .1),
+                                              ("assets/player_left_walk-2.png", .2)])
 
         self.rightAnim = pyganim.PygAnimation([("assets/player_right_walk-1.png", .2),
-                                         ("assets/player_right.png", .1),
-                                         ("assets/player_right_walk-2.png", .2)])
+                                               ("assets/player_right.png", .1),
+                                               ("assets/player_right_walk-2.png", .2)])
 
     def stop(self):
         self.state = "idle"
@@ -44,7 +49,7 @@ class Player(object):
         self.downAnim.stop()
         self.leftAnim.stop()
         self.rightAnim.stop()
-        
+
     def move_up(self):
         if self.y >= 300:
             self.y -= self.speed
@@ -70,36 +75,57 @@ class Player(object):
         self.state = self.last_state = "moveright"
 
     def space(self):
-        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and MainGame.Game.minigame_vlad is False:
+
+        global minigame_amar
+        global minigame_vlad
+        global minigame_armand
+
+        if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and MainGame.Game().minigame_vlad is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING VLAD'S MINIGAME")
-            
+
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and MainGame.Game().minigame_amar is False:
+        if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING AMAR'S MINIGAME")
 
             minigame_amar_boolean = minigames.amar.minigameAmar.main()
             print("MainGame boolean: " + str(minigame_amar_boolean))
-            MainGame.Game.setMinigameAmar(self, minigame_amar_boolean)
-            
+            #MainGame.Game.setMinigameAmar(self, minigame_amar_boolean)
+            #MainGame.minigame_amar = True
+
+            minigame_amar = minigame_amar_boolean
+
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and MainGame.Game.minigame_armand is False:
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and MainGame.Game().minigame_armand is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING ARMAND'S MINIGAME")
 
 
-            
+
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
+
+    def check(self):
+        global minigame_amar
+        global minigame_vlad
+        global minigame_armand
+        global level
+
+        if minigame_vlad and minigame_amar and minigame_armand:
+            level += 1
+            minigame_vlad = minigame_amar = minigame_armand = False
+        if level is 5:
+            pg.quit()
+            sys.exit()
 
     def render(self, screen):
         if self.state is "idle":

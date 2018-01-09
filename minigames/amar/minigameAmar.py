@@ -4,6 +4,7 @@ import pygame as pg
 from pygame.locals import *
 sys.path.append('../..')
 import MainGame as mg
+import Player as player
 import LoadAssets as la
 from minigames.amar import level1
 from minigames.amar import level2
@@ -62,7 +63,7 @@ class Problem(object):
 
     # CONSTRUCTOR
     def __init__(self):
-        self.level = mg.level
+        self.level = player.level
         self.draw = DrawText()
         self.screen = pg.display.get_surface()
         self.font = pg.font.Font(None, 30)
@@ -1959,6 +1960,7 @@ def main():
     pg.mixer.music.set_volume(0.5)
     pg.key.set_repeat(500, 30)
     Minigame().main_loop()
+    pg.key.set_repeat(1, 20)
     game = Problem()
     if completed is True:
         print("Player completed the level")
@@ -1969,7 +1971,6 @@ def main():
     else:
         print("err")
     pg.mouse.set_visible(0)
-    print("test")
 
 
 if __name__ == "__main__":

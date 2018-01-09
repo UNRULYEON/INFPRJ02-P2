@@ -1,8 +1,8 @@
 import os, sys
 import pygame as pg
 from pygame.locals import *
+import Player as player
 from LoadAssets import *
-from Player import *
 from DrawText import *
 from Objects import *
 
@@ -28,8 +28,8 @@ class Game(object):
         self.state = True
 
         self.bg = bg
-        
-        self.player = Player()
+
+        self.player = player.Player()
 
         self.draw = DrawText()
         self.font = pg.font.SysFont("comicsansms", 30)
@@ -39,10 +39,7 @@ class Game(object):
 
         # GAME VARIABLES
 
-        self.level = 1
-        self.minigame_vlad = False
-        self.minigame_amar = False
-        self.minigame_armand = False
+        print("!!!!")
 
         pg.display.flip()
 
@@ -91,30 +88,29 @@ class Game(object):
                 if event.key == K_SPACE:
                     self.player.space()
                 if event.key == K_q:
-                    print("Level: " + str(self.level))
-                    print("Vlad: " + str(self.minigame_vlad))
-                    print("Amar: " + str(self.minigame_amar))
-                    print("Armand: " + str(self.minigame_armand))
+                    print("Level: " + str(player.level))
+                    print("Vlad: " + str(player.minigame_vlad))
+                    print("Amar: " + str(player.minigame_amar))
+                    print("Armand: " + str(player.minigame_armand))
 
-    def check(self):
-        if self.minigame_vlad and self.minigame_amar and self.minigame_armand:
-            self.level += 1
-            self.minigame_vlad = self.minigame_amar = self.minigame_armand = False
-        if self.level is 5:
-            pg.quit()
-            sys.exit()
-
-    def getMinigameAmar(self):
-        self.minigame_amar = self.minigame_amar
-        return self.minigame_amar
-
-    def setMinigameAmar(self, boolean):
-        self.minigame_amar = boolean
+    # def check(self):
+    #     global minigame_amar
+    #     if self.minigame_vlad and minigame_amar and self.minigame_armand:
+    #         self.level += 1
+    #         self.minigame_vlad = minigame_amar = self.minigame_armand = False
+    #     if self.level is 5:
+    #         pg.quit()
+    #         sys.exit()
+    #
+    # def setMinigameAmar(self, boolean):
+    #     print("!")
+    #     minigame_amar = boolean
+    #     print(str(minigame_amar))
 
     def render(self):
         self.screen.blit(bg, (0,0))
 
-        self.draw.rtcenter(self.screen, "Level: " + str(self.level), 30, None, white, 355, -280, 1)
+        self.draw.rtcenter(self.screen, "Level: " + str(player.level), 30, None, white, 355, -280, 1)
         if self.player.x > 230 and self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 1
             # Name minigame
@@ -122,7 +118,7 @@ class Game(object):
 
             # Completed?
 
-            if self.minigame_vlad is True:
+            if player.minigame_vlad is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
@@ -138,7 +134,7 @@ class Game(object):
             self.draw.rtcenter(self.screen, "MINIGAME AMAR", 40, None, white, 0, -240, 0)
 
             # Completed?
-            if self.minigame_amar is True:
+            if player.minigame_amar is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
@@ -155,7 +151,7 @@ class Game(object):
 
             # Completed?
 
-            if self.minigame_armand is True:
+            if player.minigame_armand is True:
                 self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
                 self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
 
@@ -172,7 +168,8 @@ class Game(object):
         while self.state:
             pg.event.pump()
             self.control()
-            self.check()
+            print(str(pg.key.get_repeat()))
+            player.Player().check()
             self.render()
             self.clock.tick(self.fps)
         
