@@ -1,5 +1,4 @@
 import os, sys
-import logging
 import pygame as pg
 from pygame.locals import *
 from MainMenu import *
@@ -7,7 +6,6 @@ from MainMenu import *
 class DrawText(object):
 
     def __init__(self):
-        logging.info("INIT DRAW")
         self.label = ""
         self.size = 12
         self.color = (255, 255, 255)
