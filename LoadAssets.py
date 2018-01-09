@@ -1,7 +1,5 @@
 import os, sys
 import pygame as pg
-import MainGame as mg
-from pygame.locals import *
 
 def asset(name):
     fullname = os.path.join("assets", name)

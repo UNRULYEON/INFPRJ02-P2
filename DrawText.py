@@ -1,7 +1,6 @@
 import os, sys
 import pygame as pg
-from pygame.locals import *
-from MainMenu import *
+import MainGame as mg
 
 class DrawText(object):
 
@@ -25,5 +24,5 @@ class DrawText(object):
         self.font = pg.font.Font(tfont, tsize)
         self.label = str(tlabel)
         self.label = self.font.render(self.label, aa, tcolor)
-        self.label_center = self.label.get_rect(center=(screen_width / 2 + tposx, screen_height / 2 + tposy))
+        self.label_center = self.label.get_rect(center=(mg.screen_width / 2 + tposx, mg.screen_height / 2 + tposy))
         tscreen.blit(self.label, self.label_center)

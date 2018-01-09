@@ -70,9 +70,6 @@ class Player(object):
         self.state = self.last_state = "moveright"
 
     def space(self):
-
-        minigame_amar = MainGame.Game.getMinigameAmar(MainGame.Game)
-
         if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and Game.minigame_vlad is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING VLAD'S MINIGAME")

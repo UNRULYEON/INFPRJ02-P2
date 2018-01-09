@@ -3,6 +3,7 @@ import pygame as pg
 from pygame.locals import *
 from LoadAssets import *
 from Player import *
+from DrawText import *
 from Objects import *
 
 # SCREEN SETTINGS
