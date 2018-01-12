@@ -7,8 +7,8 @@ import minigames.vlad.TestProject as vladminigame
 
 level = 1
 minigame_vlad = False
-minigame_amar = True
-minigame_armand = True
+minigame_amar = False
+minigame_armand = False
 
 class Player(object):
 

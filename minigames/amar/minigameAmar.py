@@ -71,8 +71,8 @@ class Problem(object):
         print("Player is level: " + str(self.level))
         self.clock = pg.time.Clock()
         self.timer_lvl1 = 15
-        self.timer_lvl2 = 15
-        self.timer_lvl3 = 15
+        self.timer_lvl2 = 17
+        self.timer_lvl3 = 20
         self.timer_lvl4 = 30
         self.timer_lvl5 = 30
         self.timer_reset = 3
@@ -194,19 +194,22 @@ class Problem(object):
 
             posNum = numbers.index(choiceNumbers[0])
 
-            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_1_rect = rectangle_1.get_rect()
             rectangle_1_rect.x = 137.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
-            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_2_rect = rectangle_1.get_rect()
             rectangle_2_rect.x = 350
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             rectangle_2_number = numbers[posNumGuess2]
 
-            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_3_rect = rectangle_1.get_rect()
             rectangle_3_rect.x = 562.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
@@ -241,19 +244,22 @@ class Problem(object):
 
             posNum = numbers.index(choiceNumbers[0])
 
-            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_1_rect = rectangle_1.get_rect()
             rectangle_1_rect.x = 137.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             labelRandom = str(extra)
 
-            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_2_rect = rectangle_1.get_rect()
             rectangle_2_rect.x = 350
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             rectangle_2_number = numbers[posNumGuess2]
 
-            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_3_rect = rectangle_1.get_rect()
             rectangle_3_rect.x = 562.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
@@ -288,19 +294,22 @@ class Problem(object):
 
             posNum = numbers.index(choiceNumbers[0])
 
-            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_1_rect = rectangle_1.get_rect()
             rectangle_1_rect.x = 117.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
-            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_2_rect = rectangle_1.get_rect()
             rectangle_2_rect.x = 330
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             labelRandom = str(extra)
 
-            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_3_rect = rectangle_1.get_rect()
             rectangle_3_rect.x = 542.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
@@ -335,19 +344,22 @@ class Problem(object):
 
             posNum = numbers.index(choiceNumbers[0])
 
-            rectangle_1, rectangle_1_rect = la.asset("sn.png")
+            rectangle_1 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_1_rect = rectangle_1.get_rect()
             rectangle_1_rect.x = 117.75
             rectangle_1_rect.y = 300
             rectangle_1_dragging = False
             rectangle_1_number = numbers[posNumGuess1]
 
-            rectangle_2, rectangle_2_rect = la.asset("sn.png")
+            rectangle_2 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_2_rect = rectangle_1.get_rect()
             rectangle_2_rect.x = 330
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
             rectangle_2_number = numbers[posNumGuess2]
 
-            rectangle_3, rectangle_3_rect = la.asset("sn.png")
+            rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
+            rectangle_3_rect = rectangle_1.get_rect()
             rectangle_3_rect.x = 542.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
@@ -806,9 +818,9 @@ class Problem(object):
         elif self.level is 4:
             print("Level 4 problem")
 
-            a = 0
-            b = 0
-            c = 0
+            a = 1
+            b = 1
+            c = 1
 
             print("Rectangle 1: " + str(rectangle_1_rect))
             print("Rectangle 1 pos1: " + str(rectangle_1_rect.collidepoint(187.5, problem_height)))
@@ -1139,9 +1151,9 @@ class Problem(object):
         elif self.level is 5:
             print("Level 5 problem")
 
-            a = 0
-            b = 0
-            c = 0
+            a = 1
+            b = 1
+            c = 1
 
             print("Rectangle 1: " + str(rectangle_1_rect))
             print("Rectangle 1 pos1: " + str(rectangle_1_rect.collidepoint(187.5, problem_height)))
