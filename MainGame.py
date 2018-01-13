@@ -111,7 +111,7 @@ class Game(object):
         self.screen.blit(bg, (0,0))
 
         self.draw.rtcenter(self.screen, "Level: " + str(player.level), 30, None, white, 355, -280, 1)
-        if self.player.x > 230 and self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
+        if 230 < self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 1
             # Name minigame
             self.draw.rtcenter(self.screen, "MINIGAME VLAD", 40, None, white, 0, -240, 1)
@@ -128,7 +128,7 @@ class Game(object):
             # Press space to enter
             self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 1)
 
-        if self.player.x > 330 and self.player.x < 380 and self.player.y > 250 and self.player.y < 320:
+        if self.player.x > 330 and self.player.x < 380 and 250 < self.player.y < 320:
             # MINIGAME 2
             # Name minigame
             self.draw.rtcenter(self.screen, "MINIGAME AMAR", 40, None, white, 0, -240, 0)

@@ -4,6 +4,7 @@ import MainGame
 import pyganim
 import minigames.amar.minigameAmar
 import minigames.vlad.TestProject as vladminigame
+import minigames.armand.minigame as armandminigame
 
 level = 1
 minigame_vlad = False
@@ -105,16 +106,17 @@ class Player(object):
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
-        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and MainGame.Game().minigame_armand is False:
+        if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and minigame_armand is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING ARMAND'S MINIGAME")
-
+            minigame_armand_boolean = armandminigame.RunMinigame.main(level)
 
 
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
+            minigame_armand = minigame_armand_boolean
 
     def check(self):
         global minigame_amar
