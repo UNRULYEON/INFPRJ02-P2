@@ -74,7 +74,7 @@ class Problem(object):
         self.timer_lvl2 = 17
         self.timer_lvl3 = 20
         self.timer_lvl4 = 30
-        self.timer_lvl5 = 30
+        self.timer_lvl5 = 45
         self.timer_reset = 3
         self.dt = 0
         global checkButton
@@ -256,14 +256,14 @@ class Problem(object):
             rectangle_2_rect.x = 350
             rectangle_2_rect.y = 300
             rectangle_2_dragging = False
-            rectangle_2_number = numbers[posNumGuess2]
+            rectangle_2_number = numbers[posNumGuess1]
 
             rectangle_3 = pg.image.load("minigames/amar/assets/sn.png")
             rectangle_3_rect = rectangle_1.get_rect()
             rectangle_3_rect.x = 562.25
             rectangle_3_rect.y = 300
             rectangle_3_dragging = False
-            rectangle_3_number = numbers[posNumGuess1]
+            rectangle_3_number = numbers[posNumGuess2]
 
             answer = str(answer)
 
@@ -1874,7 +1874,7 @@ class Problem(object):
             labelcheck = self.font.render("Check answer", 1, (255, 255, 255))
 
             if self.resetStatus:
-                print(str(self.timer_reset))
+                #print(str(self.timer_reset))
                 self.font = pg.font.Font(None, 50)
                 labelcheck = self.font.render("Try again!", 1, (255, 0, 0))
 
@@ -1968,10 +1968,10 @@ def main():
     # FULLSCREEN MODE
     # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(1)
+    pg.mixer.music.set_volume(0.1)
     pg.mixer.music.load("minigames/amar/assets/music.mp3")
-    pg.mixer.music.set_volume(0.5)
-    pg.key.set_repeat(500, 30)
     Minigame().main_loop()
+    pg.mixer.music.stop()
     pg.key.set_repeat(1, 20)
     game = Problem()
     if completed is True:
@@ -1982,8 +1982,6 @@ def main():
         return False
     else:
         print("err")
-    pg.mouse.set_visible(0)
-
 
 if __name__ == "__main__":
     main()

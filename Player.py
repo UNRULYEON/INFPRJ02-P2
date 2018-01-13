@@ -85,38 +85,54 @@ class Player(object):
         if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and minigame_vlad is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING VLAD'S MINIGAME")
+            pg.mixer.music.stop()
+
             minigame_vlad_boolean = vladminigame.RunMinigame.main(level)
+
+            pg.mixer.music.stop()
+
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
             minigame_vlad = minigame_vlad_boolean
+
+            pg.mixer.music.load("assets/bg-music.mp3")
+
+            pg.mixer.music.play()
         if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING AMAR'S MINIGAME")
 
             minigame_amar_boolean = minigames.amar.minigameAmar.main()
-            print("MainGame boolean: " + str(minigame_amar_boolean))
-            #MainGame.Game.setMinigameAmar(self, minigame_amar_boolean)
-            #MainGame.minigame_amar = True
-
+            pg.mixer.music.stop()
             minigame_amar = minigame_amar_boolean
 
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
+
+            pg.mixer.music.load("assets/bg-music.mp3")
+
+            pg.mixer.music.play()
         if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and minigame_armand is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING ARMAND'S MINIGAME")
-            minigame_armand_boolean = armandminigame.RunMinigame.main(level)
+            pg.mixer.music.stop()
 
+            minigame_armand_boolean = armandminigame.RunMinigame.main(level)
+            pg.mixer.music.stop()
 
             self.upAnim.stop()
             self.downAnim.stop()
             self.leftAnim.stop()
             self.rightAnim.stop()
             minigame_armand = minigame_armand_boolean
+
+            pg.mixer.music.load("assets/bg-music.mp3")
+
+            pg.mixer.music.play()
 
     def check(self):
         global minigame_amar

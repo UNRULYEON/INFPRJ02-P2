@@ -176,6 +176,10 @@ class Game(object):
 def main():
     pg.init()
     pg.font.init()
+    pg.mixer.init()
+    pg.mixer.music.load("assets/bg-music.mp3")
+    pg.mixer.music.set_volume(0.1)
+    pg.mixer.music.play()
     pg.display.set_caption(screen_caption)
     pg.display.set_mode(screen_size)
     # FULLSCREEN MODE
