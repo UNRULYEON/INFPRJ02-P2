@@ -2,6 +2,7 @@ import pygame as py
 import sys
 from pygame.locals import *
 from minigames.vlad.Ball import Ball
+from random import randint
 
 WIDTH = 800
 HEIGHT = 600
@@ -10,62 +11,143 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 levelComplete = False
-class Main:
+ranlevel = randint(0, 2)
 
+class Main:
     def __init__(self, num):
         self.selected_item = None
         self.currentLevel = num
         self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
         self.regular_row = ['-', '-', '-', '-', '-', '-', '-']
         self.levels = [[
-['x', 'x', '-', '-', '-', 'x', 'x'],
-['x', 'x', '-', '-', '-', 'x', 'x'],
-['-', '-', 'O', '-', '-', '-', '-'],
-['-', 'O', 'O', 'O', 'O', '-', '-'],
-['-', '-', 'O', '-', '-', '-', '-'],
-['x', 'x', '-', '-', '-', 'x', 'x'],
-['x', 'x', '-', '-', '-', 'x', 'x']],
+            ['x', 'x', '-', '-', '-', 'x', 'x'],
+            ['x', 'x', '-', '-', '-', 'x', 'x'],
+            ['-', '-', 'O', '-', '-', '-', '-'],
+            ['-', 'O', 'O', 'O', 'O', '-', '-'],
+            ['-', '-', 'O', '-', '-', '-', '-'],
+            ['x', 'x', '-', '-', '-', 'x', 'x'],
+            ['x', 'x', '-', '-', '-', 'x', 'x']],
 
-[['x', 'x', '-', '-', '-', 'x', 'x'],
-['x', 'x', '-', 'O', '-', 'x', 'x'],
-['-', '-', '-', 'O', '-', '-', '-'],
-['-', 'O', 'O', 'O', 'O', 'O', '-'],
-['-', '-', '-', 'O', '-', '-', '-'],
-['x', 'x', '-', 'O', '-', 'x', 'x'],
-['x', 'x', '-', '-', '-', 'x', 'x']],
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['-', '-', '-', 'O', 'O', '-', '-'],
+             ['-', '-', 'O', 'O', 'O', '-', '-'],
+             ['-', '-', '-', '-', '-', '-', '-'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
 
-[['x', 'x', '-', '-', 'O', 'x', 'x'],
-['x', 'x', '-', 'O', 'O', 'x', 'x'],
-['-', '-', 'O', 'O', 'O', '-', '-'],
-['-', 'O', 'O', 'O', 'O', '-', '-'],
-['-', '-', 'O', 'O', 'O', '-', '-'],
-['x', 'x', '-', 'O', 'O', 'x', 'x'],
-['x', 'x', '-', '-', 'O', 'x', 'x']],
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['-', '-', '-', 'O', 'O', '-', '-'],
+             ['-', '-', '-', '-', '-', '-', '-'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
 
-[['x', 'x', '-', '-', '-', 'x', 'x'],
-['x', 'x', '-', '-', '-', 'x', 'x'],
-['-', '-', '-', 'O', 'O', 'O', 'O'],
-['-', '-', '-', '-', 'O', 'O', 'O'],
-['-', '-', '-', 'O', 'O', 'O', 'O'],
-['x', 'x', '-', '-', '-', 'x', 'x'],
-['x', 'x', '-', '-', '-', 'x', 'x']],
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['-', 'O', 'O', 'O', 'O', 'O', '-'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
 
-[['x', 'x', '-', 'O', '-', 'x', 'x'],
-['x', 'x', 'O', 'O', 'O', 'x', 'x'],
-['-', 'O', 'O', 'O', 'O', 'O', '-'],
-['O', 'O', 'O', '-', 'O', 'O', 'O'],
-['-', 'O', 'O', 'O', 'O', 'O', '-'],
-['x', 'x', 'O', 'O', 'O', 'x', 'x'],
-['x', 'x', '-', 'O', '-', 'x', 'x']],
-]
-        self.coordinates = self.levels[num -1]
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['-', 'O', '-', '-', '-', '-', '-'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['O', 'O', '-', '-', 'O', '-', '-'],
+             ['x', 'x', '-', '-', 'O', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
+
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['-', 'O', 'O', 'O', 'O', 'O', '-'],
+             ['-', 'O', '-', 'O', '-', 'O', '-'],
+             ['-', 'O', 'O', '-', 'O', 'O', '-'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
+
+            [['x', 'x', '-', '-', 'O', 'x', 'x'],
+             ['x', 'x', '-', 'O', 'O', 'x', 'x'],
+             ['-', '-', 'O', 'O', 'O', '-', '-'],
+             ['-', 'O', 'O', 'O', 'O', '-', '-'],
+             ['-', '-', 'O', 'O', 'O', '-', '-'],
+             ['x', 'x', '-', 'O', 'O', 'x', 'x'],
+             ['x', 'x', '-', '-', 'O', 'x', 'x']],
+
+            [['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['-', '-', '-', '-', '-', '-', '-'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['-', 'O', 'O', '-', '-', '-', '-'],
+             ['x', 'x', 'O', '-', '-', 'x', 'x'],
+             ['x', 'x', 'O', '-', '-', 'x', 'x']],
+
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['-', '-', 'O', '-', 'O', 'O', 'O'],
+             ['-', '-', '-', 'O', '-', '-', '-'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
+
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['-', '-', '-', 'O', 'O', 'O', 'O'],
+             ['-', '-', '-', '-', 'O', 'O', 'O'],
+             ['-', '-', '-', 'O', 'O', 'O', 'O'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
+
+            [['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['-', 'O', 'O', '-', 'O', 'O', '-'],
+             ['-', 'O', '-', 'O', '-', 'O', '-'],
+             ['-', 'O', 'O', '-', 'O', 'O', '-'],
+             ['x', 'x', '-', '-', '-', 'x', 'x'],
+             ['x', 'x', '-', '-', '-', 'x', 'x']],
+
+            [['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['-', '-', 'O', 'O', 'O', '-', '-'],
+             ['O', 'O', '-', 'O', '-', 'O', 'O'],
+             ['O', 'O', '-', 'O', '-', 'O', 'O'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x']],
+
+            [['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['-', 'O', 'O', 'O', 'O', 'O', '-'],
+             ['O', 'O', 'O', '-', 'O', 'O', 'O'],
+             ['-', 'O', 'O', 'O', 'O', 'O', '-'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x']],
+
+            [['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['O', 'O', 'O', 'O', 'O', 'O', 'O'],
+             ['O', 'O', 'O', '-', 'O', 'O', 'O'],
+             ['O', 'O', 'O', 'O', 'O', 'O', 'O'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x']],
+
+            [['x', 'x', '-', 'O', '-', 'x', 'x'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['O', 'O', 'O', '-', 'O', 'O', 'O'],
+             ['O', 'O', '-', '-', '-', 'O', 'O'],
+             ['O', 'O', 'O', '-', 'O', 'O', 'O'],
+             ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
+             ['x', 'x', '-', 'O', '-', 'x', 'x']],
+        ]
+        selectedlevel = ((num-1) * 3) + ranlevel
+        self.coordinates = self.levels[selectedlevel]
         self.balls = py.sprite.Group()
         self.gen()
         self.move_count = 0
         self.win = py.mixer.Sound("minigames/vlad/Resources/Audio/winsound.wav")
         self.reset = py.mixer.Sound("minigames/vlad/Resources/Audio/reset.wav")
         self.post = py.mixer.Sound("minigames/vlad/Resources/Audio/post.ogg")
-
 
     def click(self, evt, ball):
         mouse_x, mouse_y = py.mouse.get_pos()
@@ -86,7 +168,7 @@ class Main:
                 elif row == self.selected_item[0] and col == self.selected_item[1]:
                     self.selected_item = None
                 else:
-                    #print("invalid ")
+                    # print("invalid ")
                     self.selected_item = None
             ball.dragging = False
         elif evt.type == MOUSEMOTION:
@@ -127,13 +209,12 @@ class Main:
             self.reset.play(loops=0)
 
     def update(self, event):
-    	global levelComplete
-    	if len(self.balls) == 1:
+        global levelComplete
+        if len(self.balls) == 1:
             levelComplete = True
-    	for sprite in self.balls:
-    		self.click(event, sprite)
-    	self.balls.update()
-
+        for sprite in self.balls:
+            self.click(event, sprite)
+        self.balls.update()
 
     def draw(self, screen):
         bg = py.image.load("minigames/vlad/Resources/bg.png").convert_alpha()
@@ -151,13 +232,18 @@ class Main:
                 py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
         for index, x in enumerate(self.regular_row):
             if x != 'x':
-                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 2 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 3 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 4 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 2 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE),
+                             5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 3 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE),
+                             5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 4 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE),
+                             5)
         for index, x in enumerate(self.odd_row):
             if x != 'x':
-                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE),30 + 5 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
-                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE),30 + 6 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE), 5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 5 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE),
+                             5)
+                py.draw.rect(screen, BLACK, (162 + (index * PIECE_SIZE), 30 + 6 * PIECE_SIZE, PIECE_SIZE, PIECE_SIZE),
+                             5)
         self.balls.draw(screen)
 
     def point_collision(self, point, rect, mask):
@@ -193,7 +279,8 @@ class Main:
                 return i - 1
         return 6
 
-class RunMinigame():
+
+class RunMinigame:
     def main(lvl):
         global levelComplete
         py.init()
@@ -224,4 +311,3 @@ class RunMinigame():
                 return True
         py.key.set_repeat(1, 20)
         py.quit()
-
