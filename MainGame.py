@@ -114,52 +114,54 @@ class Game(object):
         if 230 < self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 1
             # Name minigame
-            self.draw.rtcenter(self.screen, "MINIGAME VLAD", 40, None, white, 0, -240, 1)
+            self.draw.rtcenter(self.screen, "Vlad's minigame", 40, None, white, 0, -240, 1)
 
             # Completed?
 
             if player.minigame_vlad is True:
-                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
-                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+                self.draw.rtcenter(self.screen, "Deze minigame heb je al gedaan!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Voltooi de andere om naar het volgende level te gaan", 30, None, white, 0, -190, 1)
 
             # How to play
             self.draw.rtcenter(self.screen, "", 30, None, white, 0, -160, 1)
 
             # Press space to enter
-            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 1)
+            self.draw.rtcenter(self.screen, "Druk op SPATIEBALK om door te gaan", 30, None, white, 0, -50, 1)
 
         if self.player.x > 330 and self.player.x < 380 and 250 < self.player.y < 320:
             # MINIGAME 2
             # Name minigame
-            self.draw.rtcenter(self.screen, "MINIGAME AMAR", 40, None, white, 0, -240, 0)
+            self.draw.rtcenter(self.screen, "Amar's minigame", 40, None, white, 0, -240, 0)
 
             # Completed?
             if player.minigame_amar is True:
-                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
-                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+                self.draw.rtcenter(self.screen, "Deze minigame heb je al gedaan!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Voltooi de andere om naar het volgende level te gaan", 30, None, white, 0, -190, 1)
 
             # How to play
-            self.draw.rtcenter(self.screen, "Fill in the correct numbers before the timer runs out", 30, None, white, 0, -160, 1)
+            self.draw.rtcenter(self.screen, "Sleep met de muis de juiste cijfers op de juiste plek", 30, None, white, 0, -160, 1)
+            self.draw.rtcenter(self.screen, "voordat de timer voorbij is", 30, None, white, 0, -140, 1)
 
             # Press space to enter
-            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 0)
+            self.draw.rtcenter(self.screen, "Druk op SPATIEBALK om door te gaan", 30, None, white, 0, -50, 1)
 
         if self.player.x > 430 and self.player.x < 480 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 3
             # Name minigame
-            self.draw.rtcenter(self.screen, "MINIGAME ARMAND", 40, None, white, 0, -240, 0)
+            self.draw.rtcenter(self.screen, "Armand's minigame", 40, None, white, 0, -240, 0)
 
             # Completed?
 
             if player.minigame_armand is True:
-                self.draw.rtcenter(self.screen, "You've already completed this minigame!", 30, None, white, 0, -210, 1)
-                self.draw.rtcenter(self.screen, "Complete the other minigames to continue to the next level", 30, None, white, 0, -190, 1)
+                self.draw.rtcenter(self.screen, "Deze minigame heb je al gedaan!", 30, None, white, 0, -210, 1)
+                self.draw.rtcenter(self.screen, "Voltooi de andere om naar het volgende level te gaan", 30, None, white, 0, -190, 1)
 
             # How to play
-            self.draw.rtcenter(self.screen, "", 30, None, white, 0, -160, 1)
+            self.draw.rtcenter(self.screen, "Sleep met de muis het ontbrekende woord om het gezegde", 30, None, white, 0, -160, 1)
+            self.draw.rtcenter(self.screen, "in het rode vakje compleet te maken", 30, None, white, 0, -140, 1)
 
             # Press space to enter
-            self.draw.rtcenter(self.screen, "Press SPACE to enter", 30, None, white, 0, -50, 0)
+            self.draw.rtcenter(self.screen, "Druk op SPATIEBALK om door te gaan", 30, None, white, 0, -50, 1)
 
         self.player.render(self.screen)
         pg.display.flip()
@@ -179,13 +181,10 @@ def main():
     pg.mixer.init()
     pg.mixer.music.load("assets/bg-music.mp3")
     pg.mixer.music.set_volume(0.1)
-    pg.mixer.music.play()
+    pg.mixer.music.play(-1)
     pg.display.set_caption(screen_caption)
     pg.display.set_mode(screen_size)
-    # FULLSCREEN MODE
-    # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.key.set_repeat(1, 20)
-    #MainMenu().main_loop()
     Game().main_loop()
     pg.quit()
     sys.exit()

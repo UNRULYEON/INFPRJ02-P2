@@ -99,7 +99,7 @@ class Player(object):
 
             pg.mixer.music.load("assets/bg-music.mp3")
 
-            pg.mixer.music.play()
+            pg.mixer.music.play(-1)
         if self.x > 330 and self.x < 380 and self.y > 250 and self.y < 320 and minigame_amar is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING AMAR'S MINIGAME")
@@ -115,7 +115,7 @@ class Player(object):
 
             pg.mixer.music.load("assets/bg-music.mp3")
 
-            pg.mixer.music.play()
+            pg.mixer.music.play(-1)
         if self.x > 430 and self.x < 480 and self.y > 250 and self.y < 320 and minigame_armand is False:
             print(str(self.x), str(self.y))
             print("LAUNCHING ARMAND'S MINIGAME")
@@ -132,7 +132,7 @@ class Player(object):
 
             pg.mixer.music.load("assets/bg-music.mp3")
 
-            pg.mixer.music.play()
+            pg.mixer.music.play(-1)
 
     def check(self):
         global minigame_amar

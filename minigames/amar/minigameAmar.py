@@ -81,6 +81,9 @@ class Problem(object):
         checkButton = pg.rect.Rect(0, 0, 300, 50)
         checkButton.centerx = 400
         checkButton.centery = 75
+        self.answerRect1 = pg.Rect(140, (problem_height - 27.5), 110, 110)
+        self.answerRect2 = pg.Rect(328, (problem_height - 27.5), 110, 110)
+        self.answerRect3 = pg.Rect(515.75, (problem_height - 27.5), 110, 110)
         self.problemCompleted = False
         self.problemFailed = False
         self.firstend = True
@@ -1562,26 +1565,38 @@ class Problem(object):
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                 elif posNum is 1:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 elif posNum is 2:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
                 self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
@@ -1624,26 +1639,38 @@ class Problem(object):
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                 elif posNum is 1:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 elif posNum is 2:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
                 self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
@@ -1686,26 +1713,38 @@ class Problem(object):
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 187.5, problem_height, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                 elif posNum is 1:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 375.5, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 563.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 elif posNum is 2:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 563.25, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 375.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 187.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 281.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 469.375, problem_height, 1)
                 self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 650, problem_height, 1)
@@ -1748,26 +1787,38 @@ class Problem(object):
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 167.5, problem_height, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                 elif posNum is 1:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 355.5, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 elif posNum is 2:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 543.25, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 261.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 449.375, problem_height, 1)
                 self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 630, problem_height, 1)
@@ -1810,29 +1861,44 @@ class Problem(object):
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 167.5, problem_height, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                 elif posNum is 1:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 355.5, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                     if posNumGuess1 is 2:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 543.25, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect3, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 elif posNum is 2:
                     self.draw.rt(self.screen, numbers[posNum], 70, None, black, 543.25, problem_height, 1)
                     if posNumGuess1 is 0:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                     if posNumGuess1 is 1:
                         self.draw.rt(self.screen, numbers[posNumGuess1], 70, None, white, 355.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect2, 1)
                         self.draw.rt(self.screen, numbers[posNumGuess2], 70, None, white, 167.5, problem_height, 1)
+                        pg.draw.rect(self.screen, (255, 0, 0), self.answerRect1, 1)
                 self.draw.rt(self.screen, sort_answer_1, 70, None, black, 261.25, problem_height, 1)
                 self.draw.rt(self.screen, str(sort_answer_2), 70, None, black, 449.375, problem_height, 1)
                 self.draw.rt(self.screen, "= " + str(answer), 70, None, black, 610, problem_height, 1)
+
+
+                pg.draw.rect(self.screen, (255, 0, 0), (167.5, problem_height), 2)
 
                 # Sticky Note 2
                 self.screen.blit(rectangle_1, rectangle_1_rect)
@@ -1962,11 +2028,6 @@ def main():
     pg.init()
     pg.font.init()
     pg.mixer.init()
-    pg.display.set_caption(screen_caption)
-    # Delete this for prod
-    pg.display.set_mode(screen_size)
-    # FULLSCREEN MODE
-    # pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.mouse.set_visible(1)
     pg.mixer.music.set_volume(0.1)
     pg.mixer.music.load("minigames/amar/assets/music.mp3")
