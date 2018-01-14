@@ -110,7 +110,7 @@ class Game(object):
     def render(self):
         self.screen.blit(bg, (0,0))
 
-        self.draw.rtcenter(self.screen, "Level: " + str(player.level), 30, None, white, 355, -280, 1)
+        self.draw.rtcenter(self.screen, "Level: " + str(player.level), 30, None, (0, 0, 0), -260, 10, 1)
         if 230 < self.player.x < 275 and self.player.y > 250 and self.player.y < 320:
             # MINIGAME 1
             # Name minigame
@@ -183,7 +183,7 @@ def main():
     pg.mixer.music.set_volume(0.1)
     pg.mixer.music.play(-1)
     pg.display.set_caption(screen_caption)
-    pg.display.set_mode(screen_size, pg.FULLSCREEN)
+    pg.display.set_mode(screen_size)
     pg.key.set_repeat(1, 20)
     Game().main_loop()
     pg.quit()
