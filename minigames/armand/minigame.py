@@ -266,26 +266,26 @@ class Main():
                     self.label4 = self.myfont2.render("Aap", 1, (0, 0, 0))
                     self.correct_answer = self.answer3
             elif level == 3 and vraag1 == 6:
-                    self.label = self.myfont.render("Vul aan: Wie A zegt moet ook ___ zeggen", 1, (0, 0, 0))
-                    self.label1 = self.myfont2.render("Ja", 1, (0, 0, 0))
-                    self.label2 = self.myfont2.render("Nee", 1, (0, 0, 0))
-                    self.label3 = self.myfont2.render("C", 1, (0, 0, 0))
-                    self.label4 = self.myfont2.render("D", 1, (0, 0, 0))
-                    self.correct_answer = self.answer4
-            elif level == 3 and vraag1 == 7:
-                    self.label = self.myfont.render("Vul aan: Niet geschoten is altijd ___", 1, (0, 0, 0))
-                    self.label1 = self.myfont2.render("Mis", 1, (0, 0, 0))
-                    self.label2 = self.myfont2.render("Dom", 1, (0, 0, 0))
-                    self.label3 = self.myfont2.render("Nee", 1, (0, 0, 0))
-                    self.label4 = self.myfont2.render("Ja", 1, (0, 0, 0))
+                    self.label = self.myfont.render("Vul aan: Tijd is __", 1, (0, 0, 0))
+                    self.label1 = self.myfont2.render("Geld", 1, (0, 0, 0))
+                    self.label2 = self.myfont2.render("Snel", 1, (0, 0, 0))
+                    self.label3 = self.myfont2.render("Het", 1, (0, 0, 0))
+                    self.label4 = self.myfont2.render("Nu", 1, (0, 0, 0))
                     self.correct_answer = self.answer1
+            elif level == 3 and vraag1 == 7:
+                    self.label = self.myfont.render("Vul aan: ___ geschoten is altijd Mis", 1, (0, 0, 0))
+                    self.label1 = self.myfont2.render("Wel", 1, (0, 0, 0))
+                    self.label2 = self.myfont2.render("Niet", 1, (0, 0, 0))
+                    self.label3 = self.myfont2.render("Nu", 1, (0, 0, 0))
+                    self.label4 = self.myfont2.render("Al", 1, (0, 0, 0))
+                    self.correct_answer = self.answer2
             elif level == 3 and vraag1 == 8:
                     self.label = self.myfont.render("Vul aan: Ieder Huisje heeft ___ kruisje", 1, (0, 0, 0))
                     self.label1 = self.myfont2.render("Een", 1, (0, 0, 0))
-                    self.label2 = self.myfont2.render("Het", 1, (0, 0, 0))
-                    self.label3 = self.myfont2.render("Zijn", 1, (0, 0, 0))
+                    self.label2 = self.myfont2.render("Zijn", 1, (0, 0, 0))
+                    self.label3 = self.myfont2.render("Het", 1, (0, 0, 0))
                     self.label4 = self.myfont2.render("De", 1, (0, 0, 0))
-                    self.correct_answer = self.answer3
+                    self.correct_answer = self.answer2
             elif level == 3 and vraag1 == 9:
                     self.label = self.myfont.render("Vul aan: ___ geleerd, oud gedaan.", 1, (0, 0, 0))
                     self.label1 = self.myfont2.render("Oud", 1, (0, 0, 0))
@@ -337,11 +337,11 @@ class Main():
                     self.label4 = self.myfont2.render("Aap", 1, (0, 0, 0))
                     self.correct_answer = self.answer3
             elif level == 4 and vraag1 == 6:
-                    self.label = self.myfont.render("Vul aan: Wie A zegt moet ook ___ zeggen", 1, (0, 0, 0))
-                    self.label1 = self.myfont2.render("Ja", 1, (0, 0, 0))
-                    self.label2 = self.myfont2.render("Nee", 1, (0, 0, 0))
-                    self.label3 = self.myfont2.render("C", 1, (0, 0, 0))
-                    self.label4 = self.myfont2.render("B", 1, (0, 0, 0))
+                    self.label = self.myfont.render("Vul aan: ___ is geld", 1, (0, 0, 0))
+                    self.label1 = self.myfont2.render("Euro", 1, (0, 0, 0))
+                    self.label2 = self.myfont2.render("Pond", 1, (0, 0, 0))
+                    self.label3 = self.myfont2.render("Dat", 1, (0, 0, 0))
+                    self.label4 = self.myfont2.render("Tijd", 1, (0, 0, 0))
                     self.correct_answer = self.answer4
             elif level == 4 and vraag1 == 7:
                     self.label = self.myfont.render("Vul aan: Niet geschoten is altijd ___", 1, (0, 0, 0))
