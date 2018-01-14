@@ -53,8 +53,9 @@ class Player(object):
         self.rightAnim.stop()
 
     def move_up(self):
-        if self.y >= 300:
-            self.y -= self.speed
+        if self.y >= 300 or self.y >= 330:
+            if self.x <= 510 or self.y >= 330:
+                self.y -= self.speed
         self.upAnim.play()
         self.state = self.last_state = "moveup"
 
@@ -71,8 +72,9 @@ class Player(object):
         self.state = self.last_state = "moveleft"
 
     def move_right(self):
-        if self.x <=702:
-            self.x += self.speed
+        if self.x <= 702 or self.x <= 510:
+            if self.x <= 510 or self.y >= 330:
+                self.x += self.speed
         self.rightAnim.play()
         self.state = self.last_state = "moveright"
 
@@ -83,6 +85,7 @@ class Player(object):
         global minigame_armand
 
         if self.x > 230 and self.x < 275 and self.y > 250 and self.y < 320 and minigame_vlad is False:
+
             print(str(self.x), str(self.y))
             print("LAUNCHING VLAD'S MINIGAME")
             pg.mixer.music.stop()
@@ -148,6 +151,7 @@ class Player(object):
             sys.exit()
 
     def render(self, screen):
+        print("[" + str(self.x) + "," + str(self.y) + "]")
         if self.state is "idle":
             if self.last_state is "moveup":
                 self.screen.blit(self.up_standing, (self.x, self.y))
