@@ -11,10 +11,9 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 levelComplete = False
-ranlevel = randint(0, 2)
 
 class Main:
-    def __init__(self, num):
+    def __init__(self, num, rand):
         self.selected_item = None
         self.currentLevel = num
         self.odd_row = ['x', 'x', '-', '-', '-', 'x', 'x']
@@ -140,7 +139,7 @@ class Main:
              ['x', 'x', 'O', 'O', 'O', 'x', 'x'],
              ['x', 'x', '-', 'O', '-', 'x', 'x']],
         ]
-        selectedlevel = ((num-1) * 3) + ranlevel
+        selectedlevel = ((num-1) * 3) + rand
         self.coordinates = self.levels[selectedlevel]
         self.balls = py.sprite.Group()
         self.gen()
@@ -286,7 +285,8 @@ class RunMinigame:
         py.init()
         clock = py.time.Clock()
         screen = py.display.get_surface()
-        game = Main(lvl)
+        ranlevel = randint(0, 2)
+        game = Main(lvl , ranlevel)
         py.mixer.music.load("minigames/vlad/Resources/Audio/bgm.wav")
         py.mixer.music.set_volume(0.1)
         done = False
@@ -297,7 +297,10 @@ class RunMinigame:
                     done = True
                 if event.type == py.KEYDOWN:
                     if event.key == K_q:
-                        game = Main(lvl)
+                        game = Main(lvl, ranlevel)
+                    if event.key == K_ESCAPE:
+                        print("ESCAPE MINIGAME")
+                        done = True
                 if event.type == py.MOUSEBUTTONDOWN:
                     mouse_x, mouse_y = py.mouse.get_pos()
                 game.update(event)
@@ -309,5 +312,6 @@ class RunMinigame:
                 print("Player completed the level")
                 levelComplete = False
                 return True
+            elif levelComplete is False and done is True:
+                return False
         py.key.set_repeat(1, 20)
-        py.quit()
