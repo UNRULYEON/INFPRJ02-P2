@@ -75,8 +75,8 @@ class Main():
             self.answer4_draging = False
             self.correct_answer = None
             self.label = None
-            self.gameover_label = self.myfont.render("GAMEOVER", 1, (0, 0, 0))
-            self.correct_label = self.myfont.render("CORRECT", 1, (0, 0, 0))
+            self.gameover_label = self.myfont.render("GAMEOVER DRUK OP 'G' OM TERUG TE KEREN", 1, (0, 0, 0))
+            self.correct_label = self.myfont.render("CORRECT DRUK OP 'G' OM TERUG TE KEREN", 1, (0, 0, 0))
 
             self.myimage = pygame.image.load("minigames/armand/assets/bg.png")
             self.stickynote = pygame.image.load("minigames/armand/assets/sn.png")
@@ -341,7 +341,7 @@ class Main():
                     self.label1 = self.myfont2.render("Ja", 1, (0, 0, 0))
                     self.label2 = self.myfont2.render("Nee", 1, (0, 0, 0))
                     self.label3 = self.myfont2.render("C", 1, (0, 0, 0))
-                    self.label4 = self.myfont2.render("D", 1, (0, 0, 0))
+                    self.label4 = self.myfont2.render("B", 1, (0, 0, 0))
                     self.correct_answer = self.answer4
             elif level == 4 and vraag1 == 7:
                     self.label = self.myfont.render("Vul aan: Niet geschoten is altijd ___", 1, (0, 0, 0))
@@ -410,10 +410,10 @@ class Main():
             elif level == 5 and vraag1 == 6:
                     self.label = self.myfont.render("Vul aan: Wie A zegt moet ook ___ zeggen", 1, (0, 0, 0))
                     self.label1 = self.myfont2.render("Ja", 1, (0, 0, 0))
-                    self.label2 = self.myfont2.render("Nee", 1, (0, 0, 0))
+                    self.label2 = self.myfont2.render("B", 1, (0, 0, 0))
                     self.label3 = self.myfont2.render("C", 1, (0, 0, 0))
-                    self.label4 = self.myfont2.render("D", 1, (0, 0, 0))
-                    self.correct_answer = self.answer4
+                    self.label4 = self.myfont2.render("Nee", 1, (0, 0, 0))
+                    self.correct_answer = self.answer2
             elif level == 5 and vraag1 == 7:
                     self.label = self.myfont.render("Vul aan:  Zo lang er ___ is, is er hoop", 1, (0, 0, 0))
                     self.label1 = self.myfont2.render("Eten", 1, (0, 0, 0))
@@ -635,7 +635,7 @@ class Main():
 
                         if self.gameover and self.lose_done == 0:
                                 self.screen.fill(RED)
-                                self.screen.blit(self.gameover_label, (345, 275))
+                                self.screen.blit(self.gameover_label, (125, 275))
                                 pygame.mixer.music.stop()
                                 file = 'minigames/armand/assets/lose.ogg'
                                 pygame.mixer.init()
@@ -643,16 +643,18 @@ class Main():
                                 pygame.mixer.music.play()
                                 self.lose_done = 1
                                 levelComplete = 2
-                                break
+                                #break
                         elif self.gameover:
                                 self.screen.fill(RED)
-                                self.screen.blit(self.gameover_label, (345, 275))
+                                self.screen.blit(self.gameover_label, (125, 275))
                                 levelComplete = 2
-                                break
+                                if event.type == pygame.KEYDOWN:
+                                                if event.key == K_g:
+                                                    break
 
                         if self.correct and self.win_done == 0:
                                 self.screen.fill(GREEN)
-                                self.screen.blit(self.correct_label, (345, 275))
+                                self.screen.blit(self.correct_label, (135, 275))
                                 pygame.mixer.music.stop()
                                 file = 'minigames/armand/assets/win2.mp3'
                                 pygame.mixer.init()
@@ -660,13 +662,15 @@ class Main():
                                 pygame.mixer.music.play()
                                 self.win_done = 1
                                 levelComplete = 1
-                                break
+                                #break
                         elif self.correct:
                                 print("done")
                                 self.screen.fill(GREEN)
-                                self.screen.blit(self.correct_label, (345, 275))
+                                self.screen.blit(self.correct_label, (135, 275))
                                 levelComplete = 1
-                                break
+                                if event.type == pygame.KEYDOWN:
+                                                if event.key == K_g:
+                                                    break
 
                         pygame.display.update()
 
