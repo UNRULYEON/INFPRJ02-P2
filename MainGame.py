@@ -123,9 +123,9 @@ class Game(object):
                 self.draw.rtcenter(self.screen, "Voltooi de andere om naar het volgende level te gaan", 30, None, white, 0, -190, 1)
 
             # How to play
-            self.draw.rtcenter(self.screen, "Jump over a ball to make it disappear", 30, None, white, 0, -160, 1)
-            self.draw.rtcenter(self.screen, "Win by having one ball remaining on the board", 30, None, white, 0, -140, 1)
-            self.draw.rtcenter(self.screen, "Reset the board by pressing Q", 30, None, white, 0, -120, 1)
+            self.draw.rtcenter(self.screen, "Sleep een stickynote over elkaar om het te verwijderen", 30, None, white, 0, -160, 1)
+            self.draw.rtcenter(self.screen, "Win door maar een sticky note op het bord over te houden", 30, None, white, 0, -140, 1)
+            self.draw.rtcenter(self.screen, "Reset het bord door Q te drukken", 30, None, white, 0, -120, 1)
 
             # Press space to enter
             self.draw.rtcenter(self.screen, "Druk op SPATIEBALK om door te gaan", 30, None, white, 0, -50, 1)
