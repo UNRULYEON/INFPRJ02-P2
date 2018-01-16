@@ -151,7 +151,7 @@ class Player(object):
             sys.exit()
 
     def render(self, screen):
-        print("[" + str(self.x) + "," + str(self.y) + "]")
+        #print("[" + str(self.x) + "," + str(self.y) + "]")
         if self.state is "idle":
             if self.last_state is "moveup":
                 self.screen.blit(self.up_standing, (self.x, self.y))

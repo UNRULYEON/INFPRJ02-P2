@@ -185,7 +185,7 @@ def main():
     pg.mixer.music.set_volume(0.1)
     pg.mixer.music.play(-1)
     pg.display.set_caption(screen_caption)
-    pg.display.set_mode(screen_size)
+    pg.display.set_mode(screen_size, pg.FULLSCREEN)
     pg.key.set_repeat(1, 20)
     Game().main_loop()
     pg.quit()
